@@ -9,15 +9,17 @@ I.   Create a table with following columns.
 	Design		character	15
 	Basic		numeric	10,2
 	Gender		character	1
-   ID	DeptID	Name	Designation	Basic	Gender
-101	1	Ram	Typist	2000	M
-102	2	Arun	Analyst	6000	M
-121	1	Ruby	Typist	2010	F
-156	3	Mary	Manager	4500	F
-123	2	Mridula	Analyst	6000	F
-114	4	Menon	Clerk	1500	M
-115	4	Tim	Clerk	1500	M
-127	2	Kiran	Manager	4000	M
+
+
+ID	DeptID	Name	Designation	Basic	Gender
+101	1	Ram	Typist		2000	M
+102	2	Arun	Analyst		6000	M
+121	1	Ruby	Typist		2010	F
+156	3	Mary	Manager		4500	F
+123	2	Mridula	Analyst		6000	F
+114	4	Menon	Clerk		1500	M
+115	4	Tim	Clerk		1500	M
+127	2	Kiran	Manager		4000	M
 
 
 krysh@AnandhaKrishnan:~$ sudo mysql -u root -p
