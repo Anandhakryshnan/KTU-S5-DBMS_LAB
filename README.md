@@ -1,4 +1,4 @@
-** SYLABUS
+<H1>SYLABUS</H1> 
 
 1. Design a database schema for an application with ER diagram from a problem description
 **.
@@ -7,7 +7,6 @@ Commands **.
 3. Creation of database schema - DDL (create tables, set constraints, enforce relationships,
 create indices, delete and modify tables). Export ER diagram from the database and verify
 relationships** (with the ER diagram designed in step 1).
-68 COMPUTER SCIENCE AND ENGINEERING For More Study Materials : https://www.keralanotes.com/ https://www.keralanotes.com/
 
 4. Database initialization - Data insert, Data import to a database (bulk import using UI and
 SQL Commands)**.
