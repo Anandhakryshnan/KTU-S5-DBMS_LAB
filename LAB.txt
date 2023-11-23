@@ -1,25 +1,21 @@
-# KTU-S5-DBMS_LAB
-
 SQL PRACTISE QUESTIONS
 
-I.   Create a table with following columns.
-	ID		character	5
-	DeptID 	numeric	2
-	Name 		character	15
-	Design		character	15
-	Basic		numeric	10,2
-	Gender		character	1
-
-
+I. Create a table with following columns.
+ID		character	5
+DeptID 	numeric	2
+Name 		character	15
+Design		character	15
+Basic		numeric	10,2
+Gender		character	1
 ID	DeptID	Name	Designation	Basic	Gender
-101	1	Ram	Typist		2000	M
-102	2	Arun	Analyst		6000	M
-121	1	Ruby	Typist		2010	F
-156	3	Mary	Manager		4500	F
-123	2	Mridula	Analyst		6000	F
-114	4	Menon	Clerk		1500	M
-115	4	Tim	Clerk		1500	M
-127	2	Kiran	Manager		4000	M
+101	1	Ram	Typist	2000	M
+102	2	Arun	Analyst	6000	M
+121	1	Ruby	Typist	2010	F
+156	3	Mary	Manager	4500	F
+123	2	Mridula	Analyst	6000	F
+114	4	Menon	Clerk	1500	M
+115	4	Tim	Clerk	1500	M
+127	2	Kiran	Manager	4000	M
 
 
 krysh@AnandhaKrishnan:~$ sudo mysql -u root -p
@@ -38,30 +34,29 @@ Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 
 Database changed
+mysql> --ANANDHA KRISHNAN
 mysql> CREATE TABLE Employee (
-    ->     ID INT,
-    ->     DeptID INT,
-    ->     Name VARCHAR(15),
-    ->     Design VARCHAR(15),
-    ->     Basic DECIMAL(10,2),
-    ->     Gender CHAR(1));
+->     ID INT,
+->     DeptID INT,
+->     Name VARCHAR(15),
+->     Design VARCHAR(15),
+->     Basic DECIMAL(10,2),
+->     Gender CHAR(1));
 Query OK, 0 rows affected (0.04 sec)
 
-mysql> INSERT INTO Employee (ID, DeptID, Name, Design, Basic, Gender)
-    -> VALUES
-    -> (101, 1, 'Ram', 'Typist', 2000, 'M'),
-    -> (102, 2, 'Arun', 'Analyst', 6000, 'M'),
-    -> (121, 1, 'Ruby', 'Typist', 2010, 'F'),
-    -> (156, 3, 'Mary', 'Manager', 4500, 'F'),
-    -> (123, 2, 'Mridula', 'Analyst', 6000, 'F'),
-    -> (114, 4, 'Menon', 'Clerk', 1500, 'M'),
-    -> (115, 4, 'Tim', 'Clerk', 1500, 'M'),
-    -> (127, 2, 'Kiran', 'Manager', 4000, 'M');
-Query OK, 8 rows affected (0.04 sec)
-Records: 8  Duplicates: 0  Warnings: 0
 
-1.  Get the description of the table.
 
+
+
+
+
+
+
+
+
+1. Get the description of the table.
+
+mysql> --ANANDHA KRISHNAN
 mysql> DESC Employee;
 +--------+---------------+------+-----+---------+-------+
 | Field  | Type          | Null | Key | Default | Extra |
@@ -75,8 +70,9 @@ mysql> DESC Employee;
 +--------+---------------+------+-----+---------+-------+
 6 rows in set (0.00 sec)
 
-2.  Display all the records from the above table.
+2. Display all the records from the above table.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT * FROM Employee;
 +------+--------+---------+---------+---------+--------+
 | ID   | DeptID | Name    | Design  | Basic   | Gender |
@@ -91,9 +87,17 @@ mysql> SELECT * FROM Employee;
 |  127 |      2 | Kiran   | Manager | 4000.00 | M      |
 +------+--------+---------+---------+---------+--------+
 8 rows in set (0.00 sec)
-3.  Display the ID, name, designation and basic salary of all the employees.
 
+
+3. Display the ID, name, designation and basic salary of all the employees.
+
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT ID, Name, Design, Basic FROM Employee;
+
+
+
+
+
 +------+---------+---------+---------+
 | ID   | Name    | Design  | Basic   |
 +------+---------+---------+---------+
@@ -108,8 +112,9 @@ mysql> SELECT ID, Name, Design, Basic FROM Employee;
 +------+---------+---------+---------+
 8 rows in set (0.00 sec)
 
-4.  Display ID and name of all the employees from department no.2
+4. Display ID and name of all the employees from department no.2
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT ID, Name FROM Employee WHERE DeptID = 2;
 +------+---------+
 | ID   | Name    |
@@ -120,18 +125,20 @@ mysql> SELECT ID, Name FROM Employee WHERE DeptID = 2;
 +------+---------+
 3 rows in set (0.00 sec)
 
-5.  Display ID, name, desig,deptID and basic, DA, HRA  and net salary of all employees with suitable  headings as DA, HRA and NET_SAL respectively.(DA is 7.5% of basic,  and NET_SAL is Basic + DA+ HRA)
+5. Display ID, name, desig,deptID and basic, DA, HRA  and net salary of all employees with suitable  headings as DA, HRA and NET_SAL respectively.(DA is 7.5% of basic,  and NET_SAL is Basic + DA+ HRA)
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     ID,
-    ->     Name,
-    ->     Design AS Desig,
-    ->     DeptID,
-    ->     Basic,
-    ->     (Basic * 0.075) AS DA,  -- DA is 7.5% of Basic
-    ->     (Basic * 0.05) AS HRA,  -- HRA is 5% of Basic (adjust as needed)
-    ->     (Basic + (Basic * 0.075) + (Basic * 0.05)) AS NET_SAL
-    -> FROM
-    ->     Employee;
+->     ID,
+->     Name,
+->     Design AS Desig,
+->     DeptID,
+->     Basic,
+->     (Basic * 0.075) AS DA,  -- DA is 7.5% of Basic
+->     (Basic * 0.05) AS HRA,  -- HRA is 5% of Basic (adjust as needed)
+->     (Basic + (Basic * 0.075) + (Basic * 0.05)) AS NET_SAL
+-> FROM
+->     Employee;
+
 
 +------+---------+---------+--------+---------+-----------+----------+------------+
 | ID   | Name    | Desig   | DeptID | Basic   | DA        | HRA      | NET_SAL    |
@@ -148,16 +155,17 @@ mysql> SELECT
 8 rows in set (0.00 sec)
 
 
-6.  Display ID, name, desig, deptID and basic salary in the descending order of basic pay.
+6. Display ID, name, desig, deptID and basic salary in the descending order of basic pay.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     ID,
-    ->     Name,
-    ->     Design,
-    ->     DeptID,
-    ->     Basic
-    -> FROM Employee
-    -> ORDER BY Basic DESC;
+->     ID,
+->     Name,
+->     Design,
+->     DeptID,
+->     Basic
+-> FROM Employee
+-> ORDER BY Basic DESC;
 +------+---------+---------+--------+---------+
 | ID   | Name    | Design  | DeptID | Basic   |
 +------+---------+---------+--------+---------+
@@ -171,18 +179,20 @@ mysql> SELECT
 |  115 | Tim     | Clerk   |      4 | 1500.00 |
 +------+---------+---------+--------+---------+
 8 rows in set (0.00 sec)
-7.   Display the employees whose designation is TYPIST.
 
+7.  Display the employees whose designation is TYPIST.
+
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     ID,
-    ->     Name,
-    ->     Design AS Desig,
-    ->     DeptID,
-    ->     Basic
-    -> FROM
-    ->     Employee
-    -> WHERE
-    ->     Design = 'Typist';
+->     ID,
+->     Name,
+->     Design AS Desig,
+->     DeptID,
+->     Basic
+-> FROM
+->     Employee
+-> WHERE
+->     Design = 'Typist';
 +------+------+--------+--------+---------+
 | ID   | Name | Desig  | DeptID | Basic   |
 +------+------+--------+--------+---------+
@@ -191,19 +201,18 @@ mysql> SELECT
 +------+------+--------+--------+---------+
 2 rows in set (0.00 sec)
 
-8.   Display all details of employees whose designation is either ANALYST or MANAGER.
+8. Display all details of employees whose designation is either ANALYST or MANAGER.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     ID,
-    ->     Name,
-    ->     Design AS Desig,
-    ->     DeptID,
-    ->     Basic
-    -> FROM
-    ->     Employee
-    -> WHERE
-    ->     Design IN ('Analyst', 'Manager');
-
+->     ID,
+->     Name,
+->     Design AS Desig,
+->     DeptID,
+->     Basic
+->	FROM
+->     Employee WHERE
+->     Design IN ('Analyst', 'Manager');
 
 +------+---------+---------+--------+---------+
 | ID   | Name    | Desig   | DeptID | Basic   |
@@ -214,11 +223,11 @@ mysql> SELECT
 |  127 | Kiran   | Manager |      2 | 4000.00 |
 +------+---------+---------+--------+---------+
 4 rows in set (0.00 sec)
+9. Display all designations without duplicate values.
 
-9.   Display all designations without duplicate values.
-
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT DISTINCT Design AS Unique_Designations
-    -> FROM Employee;
+-> FROM Employee;
 +---------------------+
 | Unique_Designations |
 +---------------------+
@@ -230,17 +239,18 @@ mysql> SELECT DISTINCT Design AS Unique_Designations
 4 rows in set (0.00 sec)
 
 
-10.  Display the ID, name, department and basic of all the employees who are either MANAGER or CLERK and the basic salary is in the range of 1400 and 4500.
+10. Display the ID, name, department and basic of all the employees who are either MANAGER or CLERK and the basic salary is in the range of 1400 and 4500.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     ID,
-    ->     Name,
-    ->     DeptID,
-    ->     Basic
-    -> FROM Employee
-    -> WHERE
-    ->     (Design IN ('Manager', 'Clerk'))
-    ->     AND (Basic BETWEEN 1400 AND 4500);
+->     ID,
+->     Name,
+->     DeptID,
+->     Basic
+-> FROM Employee
+-> WHERE
+->     (Design IN ('Manager', 'Clerk'))
+->     AND (Basic BETWEEN 1400 AND 4500);
 +------+-------+--------+---------+
 | ID   | Name  | DeptID | Basic   |
 +------+-------+--------+---------+
@@ -251,29 +261,34 @@ mysql> SELECT
 +------+-------+--------+---------+
 4 rows in set (0.00 sec)
 
-11.  Display the number of male staff members
+11. Display the number of male staff members
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT COUNT(*) AS Male_Staff_Count
-    -> FROM Employee
-    -> WHERE Gender = 'M';
+-> FROM Employee
+-> WHERE Gender = 'M';
+
+
+
 +------------------+
 | Male_Staff_Count |
 +------------------+
 |                5 |
 +------------------+
 1 row in set (0.00 sec)
-12.  Find the maximum salary of each designation.
 
+12. Find the maximum salary of each designation.
+
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     Design AS Designation,
-    ->     MAX(Basic) AS Max_Salary
-    -> FROM
-    ->     Employee
-    -> WHERE
-    ->     Design IN ('Typist', 'Analyst', 'Manager', 'Clerk')
-    -> GROUP BY
-    ->     Design;
-
+->     Design AS Designation,
+->     MAX(Basic) AS Max_Salary
+-> FROM
+->     Employee
+-> WHERE
+->     Design IN ('Typist', 'Analyst', 'Manager', 'Clerk')
+-> GROUP BY
+->     Design;
 
 +-------------+------------+
 | Designation | Max_Salary |
@@ -285,43 +300,50 @@ mysql> SELECT
 +-------------+------------+
 4 rows in set (0.00 sec)
 
-13.  Add a column manager-id into the above table.
+13. Add a column manager-id into the above table.
 
+mysql> --ANANDHA KRISHNAN
 mysql> ALTER TABLE Employee
-    -> ADD COLUMN Manager_ID INT;
+-> ADD COLUMN Manager_ID INT;
 Query OK, 0 rows affected (0.11 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-14.  Update values of manager id of employees as null for 101, 101 for 102, 121, 156. 102 for  123,114,115.121 for 127.
+14. Update values of manager id of employees as null for 101, 101 for 102, 121, 156. 102 for  123,114,115.121 for 127.
 
+mysql> --ANANDHA KRISHNAN
 mysql> UPDATE Employee
-    -> SET Manager_ID = NULL
-    -> WHERE ID IN (101, 121, 156);
+-> SET Manager_ID = NULL
+-> WHERE ID IN (101, 121, 156);
 Query OK, 0 rows affected (0.00 sec)
 Rows matched: 3  Changed: 0  Warnings: 0
 
+mysql> --ANANDHA KRISHNAN
 mysql> UPDATE Employee
-    -> SET Manager_ID = 101
-    -> WHERE ID = 102;
+-> SET Manager_ID = 101
+-> WHERE ID = 102;
 Query OK, 0 rows affected (0.00 sec)
 Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> --ANANDHA KRISHNAN
 mysql> UPDATE Employee
-    -> SET Manager_ID = 102
-    -> WHERE ID IN (123, 114, 115);
+-> SET Manager_ID = 102
+-> WHERE ID IN (123, 114, 115);
 Query OK, 0 rows affected (0.00 sec)
 Rows matched: 3  Changed: 0  Warnings: 0
 
+mysql> --ANANDHA KRISHNAN
 mysql> UPDATE Employee
-    -> SET Manager_ID = 121
-    -> WHERE ID = 127;
+-> SET Manager_ID = 121
+-> WHERE ID = 127;
 Query OK, 0 rows affected (0.00 sec)
 Rows matched: 1  Changed: 0  Warnings: 0
 
-15.  Display the manager id of the employee Ram.
+15. Display the manager id of the employee Ram.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT Manager_ID
-    -> FROM Employee
-    -> WHERE Name = 'Ram';
+-> FROM Employee
+-> WHERE Name = 'Ram';
 
 +------------+
 | Manager_ID |
@@ -330,12 +352,13 @@ mysql> SELECT Manager_ID
 +------------+
 1 row in set (0.00 sec)
 
-16.  Display the employee names and their manager name.
+16. Display the employee names and their manager name.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     E1.Name AS Employee_Name,
-    ->     E2.Name AS Manager_Name
-    -> FROM Employee E1 LEFT JOIN Employee E2 ON E1.Manager_ID = E2.ID;
+->     E1.Name AS Employee_Name,
+->     E2.Name AS Manager_Name
+-> FROM Employee E1 LEFT JOIN Employee E2 ON E1.Manager_ID = E2.ID;
 +---------------+--------------+
 | Employee_Name | Manager_Name |
 +---------------+--------------+
@@ -349,16 +372,18 @@ mysql> SELECT
 | Kiran         | Ruby         |
 +---------------+--------------+
 8 rows in set (0.00 sec)
-17.  Find the average salary of each department.
 
+17. Find the average salary of each department.
+
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     DeptID AS Department,
-    ->     Design AS Designation,
-    ->     AVG(Basic) AS Average_Salary
-    -> FROM Employee
-    -> WHERE
-    ->     Design IN ('Typist', 'Analyst', 'Manager', 'Clerk')
-    -> GROUP BY DeptID, Design;
+->     DeptID AS Department,
+->     Design AS Designation,
+->     AVG(Basic) AS Average_Salary
+-> FROM Employee
+-> WHERE
+->     Design IN ('Typist', 'Analyst', 'Manager', 'Clerk')
+-> GROUP BY DeptID, Design;
 +------------+-------------+----------------+
 | Department | Designation | Average_Salary |
 +------------+-------------+----------------+
@@ -370,10 +395,12 @@ mysql> SELECT
 +------------+-------------+----------------+
 5 rows in set (0.00 sec)
 
-18.  Find the maximum salary given to employees.
+18. Find the maximum salary given to employees.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT MAX(Basic) AS Max_Salary
-    -> FROM Employee;
+-> FROM Employee;
+
 +------------+
 | Max_Salary |
 +------------+
@@ -381,17 +408,16 @@ mysql> SELECT MAX(Basic) AS Max_Salary
 +------------+
 1 row in set (0.00 sec)
 
-19.  Find the number of employees in each department.
+19. Find the number of employees in each department.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     DeptID AS Department,
-    ->     COUNT(*) AS Employee_Count
-    -> FROM
-    ->     Employee
-    -> GROUP BY
-    ->     DeptID;
-
-
+->     DeptID AS Department,
+->     COUNT(*) AS Employee_Count
+-> FROM
+->     Employee
+-> GROUP BY
+->     DeptID;
 
 +------------+----------------+
 | Department | Employee_Count |
@@ -403,10 +429,11 @@ mysql> SELECT
 +------------+----------------+
 4 rows in set (0.00 sec)
 
-20.  Find the number of departments existing in the organisation.
+20. Find the number of departments existing in the organisation.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT COUNT(DISTINCT DeptID) AS Department_Count
-    -> FROM Employee;
+-> FROM Employee;
 
 +------------------+
 | Department_Count |
@@ -415,11 +442,12 @@ mysql> SELECT COUNT(DISTINCT DeptID) AS Department_Count
 +------------------+
 1 row in set (0.00 sec)
 
-21.   Display the different designations existing in the organisation.
 
+21. Display the different designations existing in the organisation.
+
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT DISTINCT Design AS Designation
-    -> FROM Employee;
-
+-> FROM Employee;
 
 +-------------+
 | Designation |
@@ -431,10 +459,11 @@ mysql> SELECT DISTINCT Design AS Designation
 +-------------+
 4 rows in set (0.00 sec)
 
-22.   Display the number of different designations existing in the organisation.
+22. Display the number of different designations existing in the organisation.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT COUNT(DISTINCT Design) AS Number_of_Designations
-    -> FROM Employee;
+-> FROM Employee;
 
 +------------------------+
 | Number_of_Designations |
@@ -443,11 +472,12 @@ mysql> SELECT COUNT(DISTINCT Design) AS Number_of_Designations
 +------------------------+
 1 row in set (0.01 sec)
 
-23.   Display the maximum salary given for female employees.
+23. Display the maximum salary given for female employees.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT MAX(Basic) AS Max_Salary
-    -> FROM Employee
-    -> WHERE Gender = 'F';
+-> FROM Employee
+-> WHERE Gender = 'F';
 +------------+
 | Max_Salary |
 +------------+
@@ -455,17 +485,20 @@ mysql> SELECT MAX(Basic) AS Max_Salary
 +------------+
 1 row in set (0.00 sec)
 
-24.   Display the female typist.
 
+
+24. Display the female typist.
+
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     ID,
-    ->     Name,
-    ->     Design AS Designation,
-    ->     DeptID AS Department,
-    ->     Basic
-    -> FROM Employee
-    -> WHERE
-    ->     Gender = 'F' AND Design = 'Typist';
+->     ID,
+->     Name,
+->     Design AS Designation,
+->     DeptID AS Department,
+->     Basic
+-> FROM Employee
+-> WHERE
+->     Gender = 'F' AND Design = 'Typist';
 +------+------+-------------+------------+---------+
 | ID   | Name | Designation | Department | Basic   |
 +------+------+-------------+------------+---------+
@@ -473,35 +506,37 @@ mysql> SELECT
 +------+------+-------------+------------+---------+
 1 row in set (0.00 sec)
 
-25.   Display the male clerks getting salary more than 3000.
+25. Display the male clerks getting salary more than 3000.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     ID,
-    ->     Name,
-    ->     Design AS Designation,
-    ->     DeptID AS Department,
-    ->     Basic
-    -> FROM
-    ->     Employee
-    -> WHERE
-    ->     Gender = 'M'
-    ->     AND Design = 'Clerk'
-    ->     AND Basic > 3000;
+->     ID,
+->     Name,
+->     Design AS Designation,
+->     DeptID AS Department,
+->     Basic
+-> FROM
+->     Employee
+-> WHERE
+->     Gender = 'M'
+->     AND Design = 'Clerk'
+->     AND Basic > 3000;
 Empty set (0.00 sec)
 
-26.   Display the details of managers or analysts working for dept id 2.
+26. Display the details of managers or analysts working for dept id 2.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     ID,
-    ->     Name,
-    ->     Design AS Designation,
-    ->     DeptID AS Department,
-    ->     Basic
-    -> FROM
-    ->     Employee
-    -> WHERE
-    ->     (Design = 'Manager' OR Design = 'Analyst')
-    ->     AND DeptID = 2;
+->     ID,
+->     Name,
+->     Design AS Designation,
+->     DeptID AS Department,
+->     Basic
+-> FROM
+->     Employee
+-> WHERE
+->     (Design = 'Manager' OR Design = 'Analyst')
+->     AND DeptID = 2;
 
 
 +------+---------+-------------+------------+---------+
@@ -513,16 +548,16 @@ mysql> SELECT
 +------+---------+-------------+------------+---------+
 3 rows in set (0.00 sec)
 
-27.   Display the designation and salary of Ruby.
+27. Display the designation and salary of Ruby.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     Design AS Designation,
-    ->     Basic AS Salary
-    -> FROM
-    ->     Employee
-    -> WHERE
-    ->     Name = 'Ruby';
-
+->     Design AS Designation,
+->     Basic AS Salary
+-> FROM
+->     Employee
+-> WHERE
+->     Name = 'Ruby';
 
 +-------------+---------+
 | Designation | Salary  |
@@ -531,22 +566,25 @@ mysql> SELECT
 +-------------+---------+
 1 row in set (0.00 sec)
 
-28.   Add a column joining date to the above table.
+28. Add a column joining date to the above table.
 
+mysql> --ANANDHA KRISHNAN
 mysql> ALTER TABLE Employee
-    -> ADD COLUMN JoiningDate DATE;
+-> ADD COLUMN JoiningDate DATE;
 Query OK, 0 rows affected (0.09 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-29.   Update appropriate values for the joining date field.
 
+29. Update appropriate values for the joining date field.
+
+mysql> --ANANDHA KRISHNAN
 mysql> UPDATE Employee
-    -> SET JoiningDate = DATE_ADD('2020-01-01', INTERVAL FLOOR(RAND() * 365) DAY);
+-> SET JoiningDate = DATE_ADD('2020-01-01', INTERVAL FLOOR(RAND() * 365) DAY);
 Query OK, 8 rows affected (0.05 sec)
 Rows matched: 8  Changed: 8  Warnings: 0
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT *FROM Employee;
-
 
 +------+--------+---------+---------+---------+--------+------------+-------------+
 | ID   | DeptID | Name    | Design  | Basic   | Gender | Manager_ID | JoiningDate |
@@ -562,19 +600,24 @@ mysql> SELECT *FROM Employee;
 +------+--------+---------+---------+---------+--------+------------+-------------+
 8 rows in set (0.00 sec)
 
-30.   Display the details of employees according to their seniority.
+30. Display the details of employees according to their seniority.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     ID,
-    ->     Name,
-    ->     Design AS Designation,
-    ->     DeptID AS Department,
-    ->     Basic,
-    ->     JoiningDate
-    -> FROM
-    ->     Employee
-    -> ORDER BY
-    ->     JoiningDate ASC;
+->     ID,
+->     Name,
+->     Design AS Designation,
+->     DeptID AS Department,
+->     Basic,
+->     JoiningDate
+-> FROM
+->     Employee
+-> ORDER BY
+->     JoiningDate ASC;
+
+
+
+
 +------+---------+-------------+------------+---------+-------------+
 | ID   | Name    | Designation | Department | Basic   | JoiningDate |
 +------+---------+-------------+------------+---------+-------------+
@@ -589,26 +632,20 @@ mysql> SELECT
 +------+---------+-------------+------------+---------+-------------+
 8 rows in set (0.01 sec)
 
-31.    Display the details of employees according to the descending order of their salaries.
+31. Display the details of employees according to the descending order of their salaries.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     ID,
-    ->     Name,
-    ->     Design AS Designation,
-    ->     DeptID AS Department,
-    ->     Basic,
-    ->     JoiningDate
-    -> FROM
-    ->     Employee
-    -> ORDER BY
-    ->     Basic DESC;
-
-
-
-
-
-
-
+->     ID,
+->     Name,
+->     Design AS Designation,
+->     DeptID AS Department,
+->     Basic,
+->     JoiningDate
+-> FROM
+->     Employee
+-> ORDER BY
+->     Basic DESC;
 
 +------+---------+-------------+------------+---------+-------------+
 | ID   | Name    | Designation | Department | Basic   | JoiningDate |
@@ -624,30 +661,32 @@ mysql> SELECT
 +------+---------+-------------+------------+---------+-------------+
 8 rows in set (0.00 sec)
 
-32.   Create a new table DEPARTMENT with fields DEPTID and DNAME. Make DEPTID as the primary key.
 
+32. Create a new table DEPARTMENT with fields DEPTID and DNAME. Make DEPTID as the primary key.
+
+mysql> --ANANDHA KRISHNAN
 mysql> CREATE TABLE DEPARTMENT (
-    ->     DEPTID INT PRIMARY KEY,
-    ->     DNAME VARCHAR(255)
-    -> );
+->     DEPTID INT PRIMARY KEY,
+->     DNAME VARCHAR(255)
+-> );
 Query OK, 0 rows affected (0.08 sec)
 
-33.   Make DEPTID in employee table to refer to the DEPARTMENT table.
+33. Make DEPTID in employee table to refer to the DEPARTMENT table.
 
+mysql> --ANANDHA KRISHNAN
 mysql> ALTER TABLE Employee ADD CONSTRAINT FK_Employee_Department FOREIGN KEY (DeptId) REFERENCES Dept(Dep_ID);;
 Query OK, 8 rows affected (0.17 sec)
 Records: 8  Duplicates: 0  Warnings: 0
 
-34.   Insert values into the DEPARTMENT table. Make sure that all the existing values for DEPTID in emp is inserted into this table. Sample values are DESIGN,CODING,TESTING,RESEARCH.
+34. Insert values into the DEPARTMENT table. Make sure that all the existing values for DEPTID in emp is inserted into this table. Sample values are DESIGN,CODING,TESTING,RESEARCH.
 
+mysql> --ANANDHA KRISHNAN
 mysql>INSERT INTO `Dept` VALUES (1,'DESIGN'),(2,'CODING'),(3,'TESTING'),(4,'RESEARCH');
 
-35.   Display the employee name and department name.
+35. Display the employee name and department name.
 
+mysql> --ANANDHA KRISHNAN
 mysql> Select  Employee,Dept where Employee.DeptId=Dept.Dep_ID;
-
-
-
 
 +---------+----------+
 | Name    | D_name   |
@@ -662,9 +701,9 @@ mysql> Select  Employee,Dept where Employee.DeptId=Dept.Dep_ID;
 | Kiran   | CODING   |
 +---------+----------+
 8 rows in set (0.02 sec)
+36. Display the department name of employee Arun.
 
-36.   Display the department name of employee Arun.
-
+mysql> --ANANDHA KRISHNAN
 mysql> select D_name from Dept where Dep_ID=(select Deptid from Employee Where Name="Arun");
 +--------+
 | D_name |
@@ -673,9 +712,9 @@ mysql> select D_name from Dept where Dep_ID=(select Deptid from Employee Where N
 +--------+
 1 row in set (0.00 sec)
 
+37. Display the salary given by DESIGN department.
 
-37.   Display the salary given by DESIGN department.
-
+mysql> --ANANDHA KRISHNAN
 mysql> select Base from Employee where DeptId=(select Dep_ID from Dept where D_name=("DESIGN"));
 +------+
 | Base |
@@ -685,7 +724,7 @@ mysql> select Base from Employee where DeptId=(select Dep_ID from Dept where D_n
 +------+
 2 rows in set (0.00 sec)
 
-38.   Display the details of typist working in DESIGN department.
+38. Display the details of typist working in DESIGN department.
 
 select* from Employee where Designation="Typist" and DeptID=(select DeptID from Dept where D_name="DESIGN");
 
@@ -699,7 +738,10 @@ select* from Employee where Designation="Typist" and DeptID=(select DeptID from 
 2 rows in set (0.00 sec)
 
 
-39.    Display the salary of employees working in RESEARCH department.
+
+
+
+39. Display the salary of employees working in RESEARCH department.
 
 select Base from Employee where DeptID=(select Dep_ID from Dept where D_name="RESEARCH");
 +------+
@@ -710,9 +752,9 @@ select Base from Employee where DeptID=(select Dep_ID from Dept where D_name="RE
 +------+
 2 rows in set (0.00 sec)
 
+40. List the female employees working in TESTING department.
 
-40.   List the female employees working in TESTING department.
-
+mysql> --ANANDHA KRISHNAN
 mysql> select name from Employee where Gender="F" and DeptID=(select Dep_ID from Dept where D_name="TESTING");
 +------+
 | name |
@@ -721,13 +763,9 @@ mysql> select name from Employee where Gender="F" and DeptID=(select Dep_ID from
 +------+
 1 row in set (0.00 sec)
 
-41.    Display the details of employees not working in CODING or TESTING department.
+41. Display the details of employees not working in CODING or TESTING department.
 
 select*from Employee where DeptID in(select DeptID from Dept where D_name not in ('TESTING','CODING'));
-
-
-
-
 
 +------+--------+---------+-------------+------+--------+------+------+---------+------------+------------+
 | ID   | DeptId | Name    | Designation | Base | Gender | HRA  | DA   | NET_SAL | Manager_Id | Join_date  |
@@ -744,9 +782,9 @@ select*from Employee where DeptID in(select DeptID from Dept where D_name not in
 8 rows in set (0.00 sec)
 
 
+42. Display the names of department giving maximum salary.
 
-42.    Display the names of department giving maximum salary.
-
+mysql> --ANANDHA KRISHNAN
 mysql> select D_name from Dept where Dep_ID in(select DeptId from  Employee where Base=(select Max(Base) from Employee));
 +--------+
 | D_name |
@@ -755,8 +793,9 @@ mysql> select D_name from Dept where Dep_ID in(select DeptId from  Employee wher
 +--------+
 1 row in set (0.00 sec)
 
-43.    Display the names of departments with minimum number of employees.
+43. Display the names of departments with minimum number of employees.
 
+mysql> --ANANDHA KRISHNAN
 mysql> select D_name from Dept where Dep_ID in(select DeptId from  Employee where DeptId=(select min(DeptId) from Employee));
 
 +--------+
@@ -766,9 +805,9 @@ mysql> select D_name from Dept where Dep_ID in(select DeptId from  Employee wher
 +--------+
 1 row in set (0.00 sec)
 
+44. Display the second maximum salary.
 
-44.   Display the second maximum salary.
-
+mysql> --ANANDHA KRISHNAN
 mysql> select min(Base) from Employee;
 +-----------+
 | min(Base) |
@@ -777,9 +816,14 @@ mysql> select min(Base) from Employee;
 +-----------+
 1 row in set (0.00 sec)
 
-45.    Display the second minimum salary.
+45. Display the second minimum salary.
 
+mysql> --ANANDHA KRISHNAN
 mysql> select min(Base) from Employee where Base<(1500);
+
+
+
+
 +-----------+
 | min(Base) |
 +-----------+
@@ -787,9 +831,9 @@ mysql> select min(Base) from Employee where Base<(1500);
 +-----------+
 1 row in set (0.00 sec)
 
+46. Display the names of employees getting salary greater than the average salary of their department.
 
-46.    Display the names of employees getting salary greater than the average salary of their department.
-
+mysql> --ANANDHA KRISHNAN
 mysql> select Name from Employee where(select avg(Base)from Employee);
 +---------+
 | Name    |
@@ -805,8 +849,8 @@ mysql> select Name from Employee where(select avg(Base)from Employee);
 +---------+
 8 rows in set (0.00 sec)
 
-
-47.    Display the names of employees working under the manager Ram.
+47. Display the names of employees working under the manager Ram.
+mysql> --ANANDHA KRISHNAN
 mysql> select Name from Employee where Manager_Id=(select ID from Employee where Name='Ram');
 +------+
 | Name |
@@ -820,15 +864,17 @@ mysql> select Name from Employee where Manager_Id=(select ID from Employee where
 
 48. Display the deptid and total number of employees as “ Number of Dept_Employees” for only those departments with more than 3 employees.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT DeptId, COUNT(*) AS 'Number_of_Dept_Employees'
-    -> FROM Employee
-    -> GROUP BY DeptId HAVING COUNT(*) > 3;
+-> FROM Employee
+-> GROUP BY DeptId HAVING COUNT(*) > 3;
 Empty set (0.00 sec)
 
 49. Display the deptid and minimum salary as “Lowest Salary” for those departments with minimum salary above 2500.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT DeptId, MIN(Base) AS 'Lowest Salary'
-    -> FROM Employee GROUP BY DeptId HAVING MIN(Base) > 2500;
+-> FROM Employee GROUP BY DeptId HAVING MIN(Base) > 2500;
 +--------+---------------+
 | DeptId | Lowest Salary |
 +--------+---------------+
@@ -836,15 +882,17 @@ mysql> SELECT DeptId, MIN(Base) AS 'Lowest Salary'
 |      3 |          4500 |
 +--------+---------------+
 2 rows in set (0.00 sec)
+
 50. Display the names of employees whose salary is the maximum given by their department.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT e.Name, e.DeptId, e.NET_SAL AS 'Maximum_Salary'
-    -> FROM Employee e
-    -> JOIN (
-    ->     SELECT DeptId, MAX(NET_SAL) AS MaxSalary
-    ->     FROM Employee
-    ->     GROUP BY DeptId
-    -> ) emax ON e.DeptId = emax.DeptId AND e.NET_SAL = emax.MaxSalary;
+-> FROM Employee e
+-> JOIN (
+->     SELECT DeptId, MAX(NET_SAL) AS MaxSalary
+->     FROM Employee
+->     GROUP BY DeptId
+-> ) emax ON e.DeptId = emax.DeptId AND e.NET_SAL = emax.MaxSalary;
 +---------+--------+----------------+
 | Name    | DeptId | Maximum_Salary |
 +---------+--------+----------------+
@@ -859,10 +907,15 @@ mysql> SELECT e.Name, e.DeptId, e.NET_SAL AS 'Maximum_Salary'
 
 51. Display the names of the employees, if their salary is greater than the salary of some other employees
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT e1.Name, e1.NET_SAL AS 'Salary', e1.DeptId
-    -> FROM Employee e1
-    -> JOIN Employee e2 ON e1.DeptId = e2.DeptId AND e1.NET_SAL > e2.NET_SAL
-    -> ORDER BY e1.DeptId, e1.NET_SAL DESC;
+-> FROM Employee e1
+-> JOIN Employee e2 ON e1.DeptId = e2.DeptId AND e1.NET_SAL > e2.NET_SAL
+-> ORDER BY e1.DeptId, e1.NET_SAL DESC;
+
+
+
+
 
 
 +---------+--------+--------+
@@ -876,12 +929,13 @@ mysql> SELECT e1.Name, e1.NET_SAL AS 'Salary', e1.DeptId
 
 52. Display the names of the employees, if their salary is greater than the salary of some other employees or less than the salary of some other employees
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT e1.Name, e1.NET_SAL AS 'Salary', e1.DeptId
-    -> FROM Employee e1
-    -> WHERE EXISTS (
-    ->     SELECT 1 FROM Employee e2 WHERE e1.DeptId = e2.DeptId
-    ->     AND (e1.NET_SAL > e2.NET_SAL OR e1.NET_SAL < e2.NET_SAL) )
-    -> ORDER BY e1.DeptId, e1.NET_SAL DESC;
+-> FROM Employee e1
+-> WHERE EXISTS (
+->     SELECT 1 FROM Employee e2 WHERE e1.DeptId = e2.DeptId
+->     AND (e1.NET_SAL > e2.NET_SAL OR e1.NET_SAL < e2.NET_SAL) )
+-> ORDER BY e1.DeptId, e1.NET_SAL DESC;
 +---------+--------+--------+
 | Name    | Salary | DeptId |
 +---------+--------+--------+
@@ -892,25 +946,29 @@ mysql> SELECT e1.Name, e1.NET_SAL AS 'Salary', e1.DeptId
 | Kiran   |   8000 |      2 |
 +---------+--------+--------+
 5 rows in set (0.00 sec)
+
 53. Add a column city for employee table.
 
+mysql> --ANANDHA KRISHNAN
 mysql> ALTER TABLE Employee
-    -> ADD COLUMN City VARCHAR(255) DEFAULT NULL;
+-> ADD COLUMN City VARCHAR(255) DEFAULT NULL;
 Query OK, 0 rows affected (0.08 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 54. Add a column city for department.
 
+mysql> --ANANDHA KRISHNAN
 mysql> ALTER TABLE Dept
-    -> ADD COLUMN City VARCHAR(255) DEFAULT NULL;
+-> ADD COLUMN City VARCHAR(255) DEFAULT NULL;
 Query OK, 0 rows affected (0.07 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 55. Find the names of employees who are from the same city as their company.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT e.Name
-    -> FROM Employee e
-    -> JOIN Dept d ON e.DeptId = d.Dep_ID AND e.City = d.City;
+-> FROM Employee e
+-> JOIN Dept d ON e.DeptId = d.Dep_ID AND e.City = d.City;
 +------+
 | Name |
 +------+
@@ -920,14 +978,14 @@ mysql> SELECT e.Name
 +------+
 3 rows in set (0.01 sec)
 
-
 56. Display the names of the departments giving smallest total salary.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT d.D_name, SUM(e.NET_SAL) AS Total_Salary
-    -> FROM Dept d
-    -> JOIN Employee e ON d.Dep_ID = e.DeptId
-    -> GROUP BY d.Dep_ID, d.D_name
-    -> ORDER BY Total_Salary ASC LIMIT 1;
+-> FROM Dept d
+-> JOIN Employee e ON d.Dep_ID = e.DeptId
+-> GROUP BY d.Dep_ID, d.D_name
+-> ORDER BY Total_Salary ASC LIMIT 1;
 +----------+--------------+
 | D_name   | Total_Salary |
 +----------+--------------+
@@ -937,11 +995,12 @@ mysql> SELECT d.D_name, SUM(e.NET_SAL) AS Total_Salary
 
 57. Display the names of employees joined during 1990s
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT Name, Join_date FROM Employee WHERE YEAR(Join_date) BETWEEN 1990 AND 1999;
 Empty set (0.00 sec)
 
 58. Display the names of employees joined during the month of August.
-
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT Name, Join_date FROM Employee WHERE MONTH(Join_date) = 8;
 +------+------------+
 | Name | Join_date  |
@@ -951,22 +1010,24 @@ mysql> SELECT Name, Join_date FROM Employee WHERE MONTH(Join_date) = 8;
 1 row in set (0.00 sec)
 59. Display the details of departments not having any employees (take the help of exists clause to do this)
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT D.*
-    -> FROM Dept D
-    -> WHERE NOT EXISTS (
-    ->     SELECT 1
-    ->     FROM Employee E
-    ->     WHERE E.DeptId = D.Dep_ID
-    -> );
+-> FROM Dept D
+-> WHERE NOT EXISTS (
+->     SELECT 1
+->     FROM Employee E
+->     WHERE E.DeptId = D.Dep_ID
+-> );
 Empty set (0.00 sec)
 
 60. Display the details of departments having more than 2 employees.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT D.*
-    -> FROM Dept D
-    -> JOIN Employee E ON D.Dep_ID = E.DeptId
-    -> GROUP BY D.Dep_ID
-    -> HAVING COUNT(E.ID) > 2;
+-> FROM Dept D
+-> JOIN Employee E ON D.Dep_ID = E.DeptId
+-> GROUP BY D.Dep_ID
+-> HAVING COUNT(E.ID) > 2;
 +--------+--------+-------+
 | Dep_ID | D_name | City  |
 +--------+--------+-------+
@@ -976,34 +1037,38 @@ mysql> SELECT D.*
 
 
 
-
 61. For each department that has more than 4 employees, retrieve the department id and number of employees who are getting salary more than 5000.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT E.DeptId, COUNT(*) AS Num_Employees
-    -> FROM Employee E
-    -> WHERE E.NET_SAL > 5000
-    ->   AND E.DeptId IN (
-    ->     SELECT DeptId
-    ->     FROM Employee
-    ->     GROUP BY DeptId
-    ->     HAVING COUNT(*) > 4
-    ->   )
-    -> GROUP BY E.DeptId;
+-> FROM Employee E
+-> WHERE E.NET_SAL > 5000
+->   AND E.DeptId IN (
+->     SELECT DeptId
+->     FROM Employee
+->     GROUP BY DeptId
+->     HAVING COUNT(*) > 4
+->   )
+-> GROUP BY E.DeptId;
 Empty set (0.00 sec)
 
 62. Insert the details of some employees who are not assigned with a department.(did is null)
 
+mysql> --ANANDHA KRISHNAN
 mysql> INSERT INTO Employee (ID, DeptId, Name, Designation, Base, Gender, HRA, DA, NET_SAL, Manager_Id, Join_date)
-    -> VALUES
-    ->   ('189', NULL, 'John', 'Engineer', 6000, 'M', 1000, 4500, 10500, 101, '2023-01-15'),
-    ->   ('199', NULL, 'Jane', 'Analyst', 7000, 'F', 1200, 5000, 13200, 102, '2023-02-20');
+-> VALUES
+->   ('189', NULL, 'John', 'Engineer', 6000, 'M', 1000, 4500, 10500, 101, '2023-01-15'),
+->   ('199', NULL, 'Jane', 'Analyst', 7000, 'F', 1200, 5000, 13200, 102, '2023-02-20');
 Query OK, 2 rows affected (0.05 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 
+
+
 63. Display the names of employees and their department ids. If an employee is not assigned  with a department, display his name with department id as “null”.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT E.Name, COALESCE(E.DeptId, 'null') AS DeptId
-    -> FROM Employee E;
+-> FROM Employee E;
 +---------+--------+
 | Name    | DeptId |
 +---------+--------+
@@ -1022,12 +1087,8 @@ mysql> SELECT E.Name, COALESCE(E.DeptId, 'null') AS DeptId
 
 64. Display the names of employees and their department ids. If an employee is not assigned with a department, display his name with department id as 0.
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT E.Name, COALESCE(E.DeptId, 0) AS DeptId FROM Employee E;
-
-
-
-
-
 
 
 
@@ -1061,8 +1122,7 @@ mysql> SELECT E.Name, COALESCE(E.DeptId, 0) AS DeptId FROM Employee E;
 
 
 
-
-SQL SYLABUS EXERCISE 
+SQL SYLABUS EXERCISE
 
 Design a normalised database schema for the following requirement.
 The requirement: A library wants to maintain the record of books, members, book issue, book return,
@@ -1073,7 +1133,7 @@ weeks from the date of issue, beyond which a fine will be charged. Fine is calcu
 in days of return. For 0-7 days: Rs 10 , For 7 – 30 days: Rs 100, and for days above 30 days: Rs 10 will
 be charged per day.
 Sample Database Design
-BOOK (Book_Id, Title, Language_Id, MRP, Publisher_Id, Published_Date, Volume, Status) 
+BOOK (Book_Id, Title, Language_Id, MRP, Publisher_Id, Published_Date, Volume, Status)
 Language_Id, Publisher_Id are FK (Foreign Key)
 AUTHOR(Author_Id, Name, Email, Phone_Number, Status)
 BOOK_AUTHOR(Book_Id, Author_Id) // many-to-many relationship, both columns are PKFK
@@ -1081,7 +1141,7 @@ BOOK_AUTHOR(Book_Id, Author_Id) // many-to-many relationship, both columns are P
 PUBLISHER(Publisher_id, Name, Address)
 MEMBER(Member_Id, Name, Branch_Code, Roll_Number, Phone_Number, Email_Id,
 Date_of_Join, Status)
-BOOK_ISSUE(Issue_Id, Date_Of_Issue, Book_Id, Member_Id, Expected_Date_Of_Return, Status) 
+BOOK_ISSUE(Issue_Id, Date_Of_Issue, Book_Id, Member_Id, Expected_Date_Of_Return, Status)
 Book+Id and Member_Id are FKs
 BOOK_RETURN(Issue_Id, Actual_Date_Of_Return, LateDays, LateFee) // Issue_Id is PK and FK
 LANGUAGE(Language_id, Name) //Static Table for storing permanent data
@@ -1104,6 +1164,7 @@ e. Get the total fine collected for the current month and current quarter
 f. Get the list of students who have overdue (not returned the books even on due date)
 g. Calculate the fine (as of today) to be collected from each overdue book.
 h. Members who joined after Jan 1 2021 but has not taken any books
+
 
 
 
@@ -1178,113 +1239,133 @@ Amount (decimal)
 
  
 
+
+
+
+
+
+
+
 3. Write SQL commands to:
 a. Create DDL statements and create the tables and constraints (from the design)
 
+mysql> --ANANDHA KRISHNAN
 mysql> -- Create LANGUAGE Table
 mysql> CREATE TABLE LANGUAGE (
-    ->     Language_Id INT PRIMARY KEY,
-    ->     Name VARCHAR(255) NOT NULL
-    -> );
+->     Language_Id INT PRIMARY KEY,
+->     Name VARCHAR(255) NOT NULL
+-> );
 Query OK, 0 rows affected (0.03 sec)
 
-mysql>
+mysql> --ANANDHA KRISHNAN
 mysql> -- Create PUBLISHER Table
 mysql> CREATE TABLE PUBLISHER (
-    ->     Publisher_Id INT PRIMARY KEY,
-    ->     Name VARCHAR(255) NOT NULL,
-    ->     Address VARCHAR(255) NOT NULL
-    -> );
+->     Publisher_Id INT PRIMARY KEY,
+->     Name VARCHAR(255) NOT NULL,
+->     Address VARCHAR(255) NOT NULL
+-> );
 Query OK, 0 rows affected (0.04 sec)
 
-mysql>
+mysql> --ANANDHA KRISHNAN
 mysql> -- Create AUTHOR Table
 mysql> CREATE TABLE AUTHOR (
-    ->     Author_Id INT PRIMARY KEY,
-    ->     Name VARCHAR(255) NOT NULL,
-    ->     Email VARCHAR(255),
-    ->     Phone_Number VARCHAR(20),
-    ->     Status VARCHAR(50) NOT NULL
-    -> );
+->     Author_Id INT PRIMARY KEY,
+->     Name VARCHAR(255) NOT NULL,
+->     Email VARCHAR(255),
+->     Phone_Number VARCHAR(20),
+->     Status VARCHAR(50) NOT NULL
+-> );
 Query OK, 0 rows affected (0.03 sec)
 
-mysql>
+mysql> --ANANDHA KRISHNAN
 mysql> -- Create BOOK Table
 mysql> CREATE TABLE BOOK (
-    ->     Book_Id INT PRIMARY KEY,
-    ->     Title VARCHAR(255) NOT NULL,
-    ->     Language_Id INT,
-    ->     MRP DECIMAL(10, 2),
-    ->     Publisher_Id INT,
-    ->     Published_Date DATE,
-    ->     Volume INT,
-    ->     Status VARCHAR(50) NOT NULL,
-    ->     FOREIGN KEY (Language_Id) REFERENCES LANGUAGE(Language_Id),
-    ->     FOREIGN KEY (Publisher_Id) REFERENCES PUBLISHER(Publisher_Id)
-    -> );
+->     Book_Id INT PRIMARY KEY,
+->     Title VARCHAR(255) NOT NULL,
+->     Language_Id INT,
+->     MRP DECIMAL(10, 2),
+->     Publisher_Id INT,
+->     Published_Date DATE,
+->     Volume INT,
+->     Status VARCHAR(50) NOT NULL,
+->     FOREIGN KEY (Language_Id) REFERENCES LANGUAGE(Language_Id),
+->     FOREIGN KEY (Publisher_Id) REFERENCES PUBLISHER(Publisher_Id)
+-> );
 Query OK, 0 rows affected (0.06 sec)
 
-mysql>
+mysql> --ANANDHA KRISHNAN
 mysql> -- Create BOOK_AUTHOR Table
 mysql> CREATE TABLE BOOK_AUTHOR (
-    ->     Book_Id INT,
-    ->     Author_Id INT,
-    ->     PRIMARY KEY (Book_Id, Author_Id),
-    ->     FOREIGN KEY (Book_Id) REFERENCES BOOK(Book_Id),
-    ->     FOREIGN KEY (Author_Id) REFERENCES AUTHOR(Author_Id)
-    -> );
+->     Book_Id INT,
+->     Author_Id INT,
+->     PRIMARY KEY (Book_Id, Author_Id),
+->     FOREIGN KEY (Book_Id) REFERENCES BOOK(Book_Id),
+->     FOREIGN KEY (Author_Id) REFERENCES AUTHOR(Author_Id)
+-> );
 Query OK, 0 rows affected (0.05 sec)
 
-mysql>
+mysql> --ANANDHA KRISHNAN
 mysql> -- Create MEMBER Table
 mysql> CREATE TABLE MEMBER (
-    ->     Member_Id INT PRIMARY KEY,
-    ->     Name VARCHAR(255) NOT NULL,
-    ->     Branch_Code VARCHAR(20) NOT NULL,
-    ->     Roll_Number VARCHAR(20) NOT NULL,
-    ->     Phone_Number VARCHAR(20),
-    ->     Email_Id VARCHAR(255),
-    ->     Date_of_Join DATE,
-    ->     Status VARCHAR(50) NOT NULL
-    -> );
+->     Member_Id INT PRIMARY KEY,
+->     Name VARCHAR(255) NOT NULL,
+->     Branch_Code VARCHAR(20) NOT NULL,
+->     Roll_Number VARCHAR(20) NOT NULL,
+->     Phone_Number VARCHAR(20),
+->     Email_Id VARCHAR(255),
+->     Date_of_Join DATE,
+->     Status VARCHAR(50) NOT NULL
+-> );
 Query OK, 0 rows affected (0.03 sec)
 
-mysql>
+mysql> --ANANDHA KRISHNAN
 mysql> -- Create BOOK_ISSUE Table
 mysql> CREATE TABLE BOOK_ISSUE (
-    ->     Issue_Id INT PRIMARY KEY,
-    ->     Date_Of_Issue DATE,
-    ->     Book_Id INT,
-    ->     Member_Id INT,
-    ->     Expected_Date_Of_Return DATE,
-    ->     Status VARCHAR(50) NOT NULL,
-    ->     FOREIGN KEY (Book_Id) REFERENCES BOOK(Book_Id),
-    ->     FOREIGN KEY (Member_Id) REFERENCES MEMBER(Member_Id)
-    -> );
+->     Issue_Id INT PRIMARY KEY,
+->     Date_Of_Issue DATE,
+->     Book_Id INT,
+->     Member_Id INT,
+->     Expected_Date_Of_Return DATE,
+->     Status VARCHAR(50) NOT NULL,
+->     FOREIGN KEY (Book_Id) REFERENCES BOOK(Book_Id),
+->     FOREIGN KEY (Member_Id) REFERENCES MEMBER(Member_Id)
+-> );
 Query OK, 0 rows affected (0.08 sec)
 
-mysql>
+mysql> --ANANDHA KRISHNAN
 mysql> -- Create BOOK_RETURN Table
 mysql> CREATE TABLE BOOK_RETURN (
-    ->     Issue_Id INT PRIMARY KEY,
-    ->     Actual_Date_Of_Return DATE,
-    ->     LateDays INT,
-    ->     LateFee DECIMAL(10, 2),
-    ->     FOREIGN KEY (Issue_Id) REFERENCES BOOK_ISSUE(Issue_Id)
-    -> );
+->     Issue_Id INT PRIMARY KEY,
+->     Actual_Date_Of_Return DATE,
+->     LateDays INT,
+->     LateFee DECIMAL(10, 2),
+->     FOREIGN KEY (Issue_Id) REFERENCES BOOK_ISSUE(Issue_Id)
+-> );
 Query OK, 0 rows affected (0.04 sec)
 
-mysql>
+mysql> --ANANDHA KRISHNAN
 mysql> -- Create LATE_FEE_RULE Table
 mysql> CREATE TABLE LATE_FEE_RULE (
-    ->     FromDays INT,
-    ->     ToDays INT,
-    ->     Amount DECIMAL(10, 2),
-    ->     PRIMARY KEY (FromDays, ToDays)
-    -> );
+->     FromDays INT,
+->     ToDays INT,
+->     Amount DECIMAL(10, 2),
+->     PRIMARY KEY (FromDays, ToDays)
+-> );
 Query OK, 0 rows affected (0.04 sec)
 
+mysql> --ANANDHA KRISHNAN
 mysql> show Tables;
+
+
+
+
+
+
+
+
+
+
+
 +---------------+
 | Tables_in_ak  |
 +---------------+
@@ -1301,8 +1382,10 @@ mysql> show Tables;
 | PUBLISHER     |
 +---------------+
 11 rows in set (0.00 sec)
+
 b. Create and execute DROP TABLE command in tables with and without FOREIGN KEY constraints.
 
+mysql> --ANANDHA KRISHNAN
 mysql> -- Drop tables with and without FOREIGN KEY constraints
 mysql> DROP TABLE IF EXISTS BOOK_RETURN;
 Query OK, 0 rows affected (0.05 sec)
@@ -1333,9 +1416,9 @@ Query OK, 0 rows affected (0.02 sec)
 
 c. Create and execute ALTER TABLE command in tables with data and without data.
 
+mysql> --ANANDHA KRISHNAN
 mysql> -- Alter table without data
-mysql> ALTER TABLE MEMBER
-    -> ADD COLUMN Remarks VARCHAR(255);
+mysql> ALTER TABLE MEMBER ADD COLUMN Remarks VARCHAR(255);
 Query OK, 0 rows affected (0.04 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
@@ -1347,31 +1430,32 @@ Records: 0  Duplicates: 0  Warnings: 0
 4. Based on the above relational database design, Write SQL Query to retrieve the following information
 a. Get the number of books written by a given author
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT COUNT(*) AS NumberOfBooks
-    -> FROM BOOK_AUTHOR ba
-    -> JOIN BOOK b ON ba.Book_Id = b.Book_Id
-    -> WHERE ba.Author_Id = 1;
+-> FROM BOOK_AUTHOR ba
+-> JOIN BOOK b ON ba.Book_Id = b.Book_Id
+-> WHERE ba.Author_Id = 1;
 +---------------+
 | NumberOfBooks |
 +---------------+
 |             1 |
 +---------------+
 1 row in set (0.01 sec)
-
 b. Get the list of publishers and the number of books published by each publisher
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     p.Publisher_Id,
-    ->     p.Name AS Publisher_Name,
-    ->     COUNT(b.Book_Id) AS Number_of_Books_Published
-    -> FROM
-    ->     PUBLISHER p
-    -> LEFT JOIN
-    ->     BOOK b ON p.Publisher_Id = b.Publisher_Id
-    -> GROUP BY
-    ->     p.Publisher_Id, p.Name
-    -> ORDER BY
-    ->     Number_of_Books_Published DESC;
+->     p.Publisher_Id,
+->     p.Name AS Publisher_Name,
+->     COUNT(b.Book_Id) AS Number_of_Books_Published
+-> FROM
+->     PUBLISHER p
+-> LEFT JOIN
+->     BOOK b ON p.Publisher_Id = b.Publisher_Id
+-> GROUP BY
+->     p.Publisher_Id, p.Name
+-> ORDER BY
+->     Number_of_Books_Published DESC;
 
 +--------------+----------------+---------------------------+
 | Publisher_Id | Publisher_Name | Number_of_Books_Published |
@@ -1388,62 +1472,65 @@ mysql> SELECT
 
 c. Get the list of books that are issued but not returned
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     bi.Issue_Id,
-    ->     bi.Date_Of_Issue,
-    ->     bi.Book_Id,
-    ->     b.Title AS Book_Title,
-    ->     bi.Member_Id,
-    ->     m.Name AS Member_Name,
-    ->     bi.Expected_Date_Of_Return
-    -> FROM
-    ->     BOOK_ISSUE bi
-    -> JOIN
-    ->     BOOK b ON bi.Book_Id = b.Book_Id
-    -> JOIN
-    ->     MEMBER m ON bi.Member_Id = m.Member_Id
-    -> LEFT JOIN
-    ->     BOOK_RETURN br ON bi.Issue_Id = br.Issue_Id
-    -> WHERE
-    ->     br.Issue_Id IS NULL;
+->     bi.Issue_Id,
+->     bi.Date_Of_Issue,
+->     bi.Book_Id,
+->     b.Title AS Book_Title,
+->     bi.Member_Id,
+->     m.Name AS Member_Name,
+->     bi.Expected_Date_Of_Return
+-> FROM
+->     BOOK_ISSUE bi
+-> JOIN
+->     BOOK b ON bi.Book_Id = b.Book_Id
+-> JOIN
+->     MEMBER m ON bi.Member_Id = m.Member_Id
+-> LEFT JOIN
+->     BOOK_RETURN br ON bi.Issue_Id = br.Issue_Id
+-> WHERE
+->     br.Issue_Id IS NULL;
 Empty set (0.00 sec)
 
 d. Get the list of students who reads only ‘Malayalam’ books
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     m.Member_Id,
-    ->     m.Name AS Member_Name,
-    ->     m.Branch_Code,
-    ->     m.Roll_Number,
-    ->     m.Phone_Number,
-    ->     m.Email_Id,
-    ->     m.Date_of_Join,
-    ->     m.Status
-    -> FROM
-    ->     MEMBER m
-    -> JOIN
-    ->     BOOK_ISSUE bi ON m.Member_Id = bi.Member_Id
-    -> JOIN
-    ->     BOOK b ON bi.Book_Id = b.Book_Id
-    -> LEFT JOIN
-    ->     BOOK_RETURN br ON bi.Issue_Id = br.Issue_Id
-    -> WHERE
-    ->     b.Language_Id = 6
-    ->     AND (
-    ->         b.Book_Id IS NULL -- No book issued (optional, depends on your logic)
-    ->         OR br.Issue_Id IS NULL -- Book issued but not returned
-    ->     );
+->     m.Member_Id,
+->     m.Name AS Member_Name,
+->     m.Branch_Code,
+->     m.Roll_Number,
+->     m.Phone_Number,
+->     m.Email_Id,
+->     m.Date_of_Join,
+->     m.Status
+-> FROM
+->     MEMBER m
+-> JOIN
+->     BOOK_ISSUE bi ON m.Member_Id = bi.Member_Id
+-> JOIN
+->     BOOK b ON bi.Book_Id = b.Book_Id
+-> LEFT JOIN
+->     BOOK_RETURN br ON bi.Issue_Id = br.Issue_Id
+-> WHERE
+->     b.Language_Id = 6
+->     AND (
+->         b.Book_Id IS NULL -- No book issued (optional, depends on your logic)
+->         OR br.Issue_Id IS NULL -- Book issued but not returned
+->     );
 Empty set (0.01 sec)
 
 
 e. Get the total fine collected for the current month and current quarter
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     SUM(LateFee) AS TotalFineCurrentMonth
-    -> FROM
-    ->     BOOK_RETURN
-    -> WHERE
-    ->     MONTH(Actual_Date_Of_Return) = MONTH(CURRENT_DATE())
-    ->     AND YEAR(Actual_Date_Of_Return) = YEAR(CURRENT_DATE());
+->     SUM(LateFee) AS TotalFineCurrentMonth
+-> FROM
+->     BOOK_RETURN
+-> WHERE
+->     MONTH(Actual_Date_Of_Return) = MONTH(CURRENT_DATE())
+->     AND YEAR(Actual_Date_Of_Return) = YEAR(CURRENT_DATE());
 +-----------------------+
 | TotalFineCurrentMonth |
 +-----------------------+
@@ -1453,12 +1540,12 @@ mysql> SELECT
 
 mysql> -- Get the total fine collected for the current quarter
 mysql> SELECT
-    ->     SUM(LateFee) AS TotalFineCurrentQuarter
-    -> FROM
-    ->     BOOK_RETURN
-    -> WHERE
-    ->     (MONTH(Actual_Date_Of_Return) BETWEEN (QUARTER(CURRENT_DATE()) - 1) * 3 + 1 AND QUARTER(CURRENT_DATE()) * 3)
-    ->     AND YEAR(Actual_Date_Of_Return) = YEAR(CURRENT_DATE());
+->     SUM(LateFee) AS TotalFineCurrentQuarter
+-> FROM
+->     BOOK_RETURN
+-> WHERE
+->     (MONTH(Actual_Date_Of_Return) BETWEEN (QUARTER(CURRENT_DATE()) - 1) * 3 + 1 AND QUARTER(CURRENT_DATE()) * 3)
+->     AND YEAR(Actual_Date_Of_Return) = YEAR(CURRENT_DATE());
 +-------------------------+
 | TotalFineCurrentQuarter |
 +-------------------------+
@@ -1467,30 +1554,31 @@ mysql> SELECT
 1 row in set (0.00 sec)
 
 f. Get the list of students who have overdue (not returned the books even on due date)
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     m.Member_Id,
-    ->     m.Name AS Member_Name,
-    ->     m.Branch_Code,
-    ->     m.Roll_Number,
-    ->     m.Phone_Number,
-    ->     m.Email_Id,
-    ->     m.Date_of_Join,
-    ->     m.Status,
-    ->     bi.Issue_Id,
-    ->     bi.Date_Of_Issue,
-    ->     b.Title AS Book_Title,
-    ->     bi.Expected_Date_Of_Return
-    -> FROM
-    ->     MEMBER m
-    -> JOIN
-    ->     BOOK_ISSUE bi ON m.Member_Id = bi.Member_Id
-    -> JOIN
-    ->     BOOK b ON bi.Book_Id = b.Book_Id
-    -> LEFT JOIN
-    ->     BOOK_RETURN br ON bi.Issue_Id = br.Issue_Id
-    -> WHERE
-    ->     br.Issue_Id IS NULL -- Book issued but not returned
-    ->     AND bi.Expected_Date_Of_Return < CURRENT_DATE(); -- Overdue books
+->     m.Member_Id,
+->     m.Name AS Member_Name,
+->     m.Branch_Code,
+->     m.Roll_Number,
+->     m.Phone_Number,
+->     m.Email_Id,
+->     m.Date_of_Join,
+->     m.Status,
+->     bi.Issue_Id,
+->     bi.Date_Of_Issue,
+->     b.Title AS Book_Title,
+->     bi.Expected_Date_Of_Return
+-> FROM
+->     MEMBER m
+-> JOIN
+->     BOOK_ISSUE bi ON m.Member_Id = bi.Member_Id
+-> JOIN
+->     BOOK b ON bi.Book_Id = b.Book_Id
+-> LEFT JOIN
+->     BOOK_RETURN br ON bi.Issue_Id = br.Issue_Id
+-> WHERE
+->     br.Issue_Id IS NULL -- Book issued but not returned
+->     AND bi.Expected_Date_Of_Return < CURRENT_DATE(); -- Overdue books
 +-----------+-------------+-------------+-------------+--------------+-------------------+--------------+----------+----------+---------------+------------+-------------------------+
 | Member_Id | Member_Name | Branch_Code | Roll_Number | Phone_Number | Email_Id          | Date_of_Join | Status   | Issue_Id | Date_Of_Issue | Book_Title | Expected_Date_Of_Return |
 +-----------+-------------+-------------+-------------+--------------+-------------------+--------------+----------+----------+---------------+------------+-------------------------+
@@ -1499,35 +1587,36 @@ mysql> SELECT
 1 row in set (0.00 sec)
 
 g. Calculate the fine (as of today) to be collected from each overdue book.
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     bi.Issue_Id,
-    ->     m.Member_Id,
-    ->     m.Name AS Member_Name,
-    ->     b.Title AS Book_Title,
-    ->     bi.Expected_Date_Of_Return,
-    ->     br.Actual_Date_Of_Return,
-    ->     DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) AS Days_Delayed,
-    ->     CASE
-    ->         WHEN DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) BETWEEN 0 AND 7 THEN
-    ->             (DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) * lfr.Amount) -- Fine for 0-7 days
-    ->         WHEN DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) BETWEEN 8 AND 30 THEN
-    ->             lfr.Amount -- Fine for 8-30 days
-    ->         ELSE
-    ->             (DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) * lfr.Amount) -- Fine for more than 30 days
-    ->     END AS FineAmount
-    -> FROM
-    ->     BOOK_ISSUE bi
-    -> JOIN
-    ->     MEMBER m ON bi.Member_Id = m.Member_Id
-    -> JOIN
-    ->     BOOK b ON bi.Book_Id = b.Book_Id
-    -> LEFT JOIN
-    ->     BOOK_RETURN br ON bi.Issue_Id = br.Issue_Id
-    -> LEFT JOIN
-    ->     LATE_FEE_RULE lfr ON DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) BETWEEN lfr.FromDays AND lfr.ToDays
-    -> WHERE
-    ->     br.Issue_Id IS NULL -- Book issued but not returned
-    ->     AND bi.Expected_Date_Of_Return < CURRENT_DATE(); -- Overdue books
+->     bi.Issue_Id,
+->     m.Member_Id,
+->     m.Name AS Member_Name,
+->     b.Title AS Book_Title,
+->     bi.Expected_Date_Of_Return,
+->     br.Actual_Date_Of_Return,
+->     DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) AS Days_Delayed,
+->     CASE
+->         WHEN DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) BETWEEN 0 AND 7 THEN
+->             (DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) * lfr.Amount) -- Fine for 0-7 days
+->         WHEN DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) BETWEEN 8 AND 30 THEN
+->             lfr.Amount -- Fine for 8-30 days
+->         ELSE
+->             (DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) * lfr.Amount) -- Fine for more than 30 days
+->     END AS FineAmount
+-> FROM
+->     BOOK_ISSUE bi
+-> JOIN
+->     MEMBER m ON bi.Member_Id = m.Member_Id
+-> JOIN
+->     BOOK b ON bi.Book_Id = b.Book_Id
+-> LEFT JOIN
+->     BOOK_RETURN br ON bi.Issue_Id = br.Issue_Id
+-> LEFT JOIN
+->     LATE_FEE_RULE lfr ON DATEDIFF(CURRENT_DATE(), bi.Expected_Date_Of_Return) BETWEEN lfr.FromDays AND lfr.ToDays
+-> WHERE
+->     br.Issue_Id IS NULL -- Book issued but not returned
+->     AND bi.Expected_Date_Of_Return < CURRENT_DATE(); -- Overdue books
 +----------+-----------+-------------+------------+-------------------------+-----------------------+--------------+------------+
 | Issue_Id | Member_Id | Member_Name | Book_Title | Expected_Date_Of_Return | Actual_Date_Of_Return | Days_Delayed | FineAmount |
 +----------+-----------+-------------+------------+-------------------------+-----------------------+--------------+------------+
@@ -1535,26 +1624,24 @@ mysql> SELECT
 +----------+-----------+-------------+------------+-------------------------+-----------------------+--------------+------------+
 1 row in set (0.00 sec)
 
+
 h. Members who joined after Jan 1 2021 but has not taken any books
 
+mysql> --ANANDHA KRISHNAN
 mysql> SELECT
-    ->     m.Member_Id,
-    ->     m.Name AS Member_Name,
-    ->     m.Branch_Code,
-    ->     m.Roll_Number,
-    ->     m.Phone_Number,
-    ->     m.Email_Id,
-    ->     m.Date_of_Join,
-    ->     m.Status
-    -> FROM
-    ->     MEMBER m
-    -> WHERE
-    ->     m.Date_of_Join > '2021-01-01'
-    ->     AND m.Member_Id NOT IN (SELECT DISTINCT Member_Id FROM BOOK_ISSUE);
-
-
-
-
+->     m.Member_Id,
+->     m.Name AS Member_Name,
+->     m.Branch_Code,
+->     m.Roll_Number,
+->     m.Phone_Number,
+->     m.Email_Id,
+->     m.Date_of_Join,
+->     m.Status
+-> FROM
+->     MEMBER m
+-> WHERE
+->     m.Date_of_Join > '2021-01-01'
+->     AND m.Member_Id NOT IN (SELECT DISTINCT Member_Id FROM BOOK_ISSUE);
 
 
 +-----------+--------------+-------------+-------------+--------------+----------------------+--------------+--------+
@@ -1565,39 +1652,20 @@ mysql> SELECT
 |         8 | New Member C | B008        | R008        | 666-888-1111 | newmemberC@email.com | 2021-05-01   | Active |
 +-----------+--------------+-------------+-------------+--------------+----------------------+--------------+--------+
 3 rows in set (0.01 sec)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 PL/SQL PRACTISE QUESTIONS
 1. Write a PL/SQL block to read two numbers and find the greatest among them.
 
 mysql> delimiter //
 mysql> --ANANDHA KRISHNAN
-    -> create procedure greater(a int, b int)
-    -> BEGIN
-    -> if (a > b) then
-    -> select a;
-    -> else
-    -> select b;
-    -> end if;
-    -> END;
-    -> //
+-> create procedure greater(a int, b int)
+-> BEGIN
+-> if (a > b) then
+-> select a;
+-> else
+-> select b;
+-> end if;
+-> END;
+-> //
 
 mysql> call greater(3,4); //
 +------+
@@ -1612,19 +1680,21 @@ Query OK, 0 rows affected (0.00 sec)
 2. Write a PL/SQL block to read three numbers and find the greatest among them.
 
 mysql> --ANANDHA KRISHNAN
-    -> CREATE procedure three(a int, b int, c int)
-    -> BEGIN
-    ->     IF (a > b) && (a > c) then
-    ->       select a;
-    ->     ELSEIF (b > a) && (b > c) then
-    ->       select b;
-    ->     ELSE
-    ->       select c;
-    ->     END IF;
-    -> END;
-    -> //
+-> CREATE procedure three(a int, b int, c int)
+-> BEGIN
+->     IF (a > b) && (a > c) then
+->       select a;
+->     ELSEIF (b > a) && (b > c) then
+->       select b;
+->     ELSE
+->       select c;
+->     END IF;
+-> END;
+-> //
 
 mysql> call three(5,8,9); //
+
+
 +------+
 | c    |
 +------+
@@ -1637,17 +1707,14 @@ Query OK, 0 rows affected (0.00 sec)
 3. Write a PL/SQL block to read two numbers and print all the numbers between them.
 
 mysql> --ANANDHA KRISHNAN
-    -> CREATE PROCEDURE print(IN a INT,IN b INT)
-    -> BEGIN
-    -> DECLARE c INT;
-    -> SELECT CONCAT('Numbers between ', a, ' and ', b, ':') AS message;
-    -> SET c = a;
-    -> WHILE c < b - 1 DO
-    -> SELECT c + 1 AS number;
-    -> SET c = c + 1;
-    -> END WHILE;
-    -> END;
-    -> //
+-> CREATE PROCEDURE print(IN a INT,IN b INT)
+-> BEGIN DECLARE c INT;
+-> SELECT CONCAT('Numbers between ', a, ' and ', b, ':') AS message; SET c = a;
+-> WHILE c < b - 1 DO
+-> SELECT c + 1 AS number; SET c = c + 1;
+-> END WHILE;
+-> END;
+-> //
 
 mysql> call print(5,8); //
 +--------------------------+
@@ -1672,22 +1739,21 @@ mysql> call print(5,8); //
 1 row in set (0.00 sec)
 
 Query OK, 0 rows affected (0.00 sec)
-
 4. Write a PL/SQL block to read N and find the sum of the series 1+2+3 +... N.
 
 mysql> --ANANDHA KRISHNAN
-    -> create procedure four(n int)
-    -> begin
-    -> declare s int default(0);
-    -> declare i int default(1);
-    ->
-    ->     while(i<=n) do
-    ->     set s := s+i;
-    ->     set i := i+1;
-    ->     end while;
-    -> select s;
-    -> end;
-    -> //
+-> create procedure four(n int)
+-> begin
+-> declare s int default(0);
+-> declare i int default(1);
+->
+->     while(i<=n) do
+->     set s := s+i;
+->     set i := i+1;
+->     end while;
+-> select s;
+-> end;
+-> //
 
 mysql> call four(5); //
 +------+
@@ -1702,35 +1768,31 @@ Query OK, 0 rows affected (0.00 sec)
 5. Write a PL/SQL block to read a marks and display the grade.
 
 mysql> --ANANDHA KRISHNAN
-    -> CREATE PROCEDURE grade(n int)
-    -> begin
-    -> if (n>95) && (n<=100) then
-    -> select 'S' as grade;
-    -> elseif (n>90) && (n<=100) then
-    -> select 'A+' as grade;
-    -> elseif (n>85) && (n<=100) then
-    -> select 'A' as grade;
-    -> elseif (n>80) && (n<=100) then
-    -> select 'B+' as grade;
-    -> elseif (n>75) && (n<=100) then
-    -> select 'B' as grade;
-    -> elseif (n>70) && (n<=100) then
-    -> select 'C+' as grade;
-    -> elseif (n>65) && (n<=100) then
-    -> select 'C' as grade;
-    -> elseif (n>60) && (n<=100) then
-    -> select 'D' as grade;
-    -> elseif (n>45) && (n<=100) then
-    -> select 'P' as grade;
-    -> elseif (n>100) then
-    -> select 'Invalid' as grade;
-    -> else
-    -> select 'F' as grade;
-    -> end if;
-    -> end;
-    -> //
-
-
+-> CREATE PROCEDURE grade(n int)
+-> begin
+-> if (n>95) && (n<=100) then
+-> select 'S' as grade;
+-> elseif (n>90) && (n<=100) then
+-> select 'A+' as grade;
+-> elseif (n>85) && (n<=100) then
+-> select 'A' as grade;
+-> elseif (n>80) && (n<=100) then
+-> select 'B+' as grade;
+-> elseif (n>75) && (n<=100) then
+-> select 'B' as grade;
+-> elseif (n>70) && (n<=100) then
+-> select 'C+' as grade;
+-> elseif (n>65) && (n<=100) then
+-> select 'C' as grade;
+-> elseif (n>60) && (n<=100) then
+-> select 'D' as grade;
+-> elseif (n>45) && (n<=100) then
+-> select 'P' as grade;
+-> elseif (n>100) then
+-> select 'Invalid' as grade; else
+-> select 'F' as grade; end if;
+-> end;
+-> //
 
 mysql> call grade(50); //
 +-------+
@@ -1745,17 +1807,15 @@ Query OK, 0 rows affected (0.00 sec)
 6. Write a PL/SQL block to read a number and invert the given number.
 
 mysql> --ANANDHA KRISHNAN
-    -> CREATE procedure reverse(a int)
-    -> BEGIN
-    -> DECLARE b int ;
-    -> SET b=0;
-    -> WHILE a>0 DO
-    -> set b=(b*10)+mod (a,10);
-    -> set a=floor(a/10);
-    -> END WHILE;
-    -> Select b;
-    -> END;
-    -> //
+-> CREATE procedure reverse(a int)
+-> BEGIN
+-> DECLARE b int ;
+-> SET b=0; WHILE a>0 DO
+-> set b=(b*10)+mod (a,10);
+-> set a=floor(a/10);
+-> END WHILE;
+-> Select b; END;
+-> //
 
 mysql> call reverse(896); //
 
@@ -1767,79 +1827,24 @@ mysql> call reverse(896); //
 1 row in set (0.00 sec)
 
 Query OK, 0 rows affected (0.00 sec)
-
-7. Write a PL/SQL block to read a number and invert the given number by taking it as a
-string.
-
-mysql> CREATE PROCEDURE invert_number_proc(
-    ->     IN p_input_number INT,
-    ->     OUT p_output_number INT
-    -> )
-    -> BEGIN
-    ->     DECLARE v_input_string VARCHAR(100);
-    ->     DECLARE v_output_string VARCHAR(100) DEFAULT '';
-    ->     DECLARE i INT DEFAULT 0;
-    ->
-    ->     -- Convert the input number to a string
-    ->     SET v_input_string = CAST(p_input_number AS CHAR);
-    ->
-    ->     -- Reverse the characters of the string
-    ->     SET i = LENGTH(v_input_string);
-    ->     WHILE i > 0 DO
-    ->         SET v_output_string = CONCAT(v_output_string, SUBSTRING(v_input_string, i, 1));
-    ->         SET i = i - 1;
-    ->     END WHILE;
-    ->
-    ->     -- Convert the reversed string back to a number
-    ->     SET p_output_number = CAST(v_output_string AS SIGNED);
-    -> END;
-    -> //
-Query OK, 0 rows affected (0.04 sec)
-
-mysql> SET @input_number = 12345;
-    -> SET @output_number = 0;
-    ->
-    -> -- Call the procedure
-    -> CALL invert_number_proc(@input_number, @output_number);
-    ->
-    -> -- Display the result
-    -> SELECT @output_number AS inverted_number;
-    -> //
-Query OK, 0 rows affected (0.00 sec)
-
-Query OK, 0 rows affected (0.00 sec)
-
-Query OK, 0 rows affected (0.00 sec)
-
-+-----------------+
-| inverted_number |
-+-----------------+
-|           54321 |
-+-----------------+
-1 row in set (0.00 sec)
-
-
-
-PL/SQL SYLABUS QUESTIONS
-
-Create a Table: 
+Create a Table:
 EMPLOYEE: (ID,  NAME,  SALARY,  DEPNO, BDATE)
 Then do the following questions
-8. Write a PL/SQL block to read ID of an employee and display his salary.
-9. Write a PL/SQL block to read ID of an employee and display his name and birthdate.
-10. Write a PL/SQL block to read ID of an employee and display his month of birth.
-11. Write a PL/SQL block to read IDs of two employees and display the difference in salary
+1. Create a procedure to display Welcome to PL/SQL.
+2. Write a PL/SQL block to read ID of an employee and display his salary.
+3. Write a PL/SQL block to read ID of an employee and display his name and birthdate.
+4. Write a PL/SQL block to read ID of an employee and display his month of birth.
+5. Write a PL/SQL block to read IDs of two employees and display the difference in salary
 between them.
-16. Create a cursor to display the highest 10 salaries of the employee table.
-18. Create a procedure to display Welcome to PL/SQL.
-19. Create a procedure to accept the dno and display the id, name and salary of all the
+6. Create a cursor to display the highest 10 salaries of the employee table.
+7. Create a procedure to accept the dno and display the id, name and salary of all the
 employees working in that department. Execute this procedure and show the result.
-20. Create a function to accept the id of an employee and return his salary.
-21. Create a trigger to maintain an audit trail for employee table. When insert, update or delete is performed on employee table insert a row into emp_trail table with value specifying the operation and date of operation.
-22. Create a trigger to maintain an audit trail for employee table for tracking salary modifications. When salary is updates, insert into emp_sal_trail table a row with values of employee id, name, salary before modification, salary after modification and date of modification.
-23. Create a trigger to prevent salary modification of an employee, if salary after modification is less than the salary before modification.
-24. Create a trigger to prevent salary modification of an employee on Sunday.
-25.Assume a table Department with columns DeptNo and Total_Sal. Total_Sal maintains the total salary given by that department. Create triggers on employee table for maintaining Total_Sal in  Department table.
+8. Create a function to accept the id of an employee and return his salary.
+9. Create a trigger to maintain an audit trail for employee table. When insert, update or delete is performed on employee table insert a row into emp_trail table with value specifying the operation and date of operation.
+10. Create a trigger to maintain an audit trail for employee table for tracking salary modifications. When salary is updates, insert into emp_sal_trail table a row with values of employee id, name, salary before modification, salary after modification and date of modification.
+11. Create a trigger to prevent salary modification of an employee, if salary after modification is less than the salary before modification.
+12. Create a trigger to prevent salary modification of an employee on Sunday.
+13.Assume a table Department with columns DeptNo and Total_Sal. Total_Sal maintains the total salary given by that department. Create triggers on employee table for maintaining Total_Sal in  Department table.
 
 
 
@@ -1847,16 +1852,41 @@ employees working in that department. Execute this procedure and show the result
 
 
 
-8. Write a PL/SQL block to read ID of an employee and display his salary.
+
+
+
+1. Create a procedure to display Welcome to PL/SQL.
 
 mysql> --ANANDHA KRYSHNAN
-    -> CREATE PROCEDURE Q (X INT)
-    -> BEGIN
-    ->     SELECT NAME, SALARY
-    ->     FROM EMPLOYEE
-    ->     WHERE ID =X;
-    -> END;
-    -> //
+-> CREATE PROCEDURE display_welcome_message()
+-> BEGIN
+->     SELECT 'Welcome to PL/SQL' AS message;
+-> END;
+-> //
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> CALL display_welcome_message(); //
+
+
++-------------------+
+| message           |
++-------------------+
+| Welcome to PL/SQL |
++-------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+2. Write a PL/SQL block to read ID of an employee and display his salary.
+
+mysql> --ANANDHA KRYSHNAN
+-> CREATE PROCEDURE Q (X INT)
+-> BEGIN
+->     SELECT NAME, SALARY
+->     FROM EMPLOYEE
+->     WHERE ID =X;
+-> END;
+-> //
 
 mysql> call Q(5); //
 +---------------+----------+
@@ -1868,16 +1898,17 @@ mysql> call Q(5); //
 
 Query OK, 0 rows affected (0.00 sec)
 
-9. Write a PL/SQL block to read ID of an employee and display his name and birthdate.
+
+3. Write a PL/SQL block to read ID of an employee and display his name and birthdate.
 
 mysql> --ANANDHA KRYSHNAN
-    -> CREATE PROCEDURE Y (X INT)
-    -> BEGIN
-    ->     SELECT NAME, BDATE
-    ->     FROM EMPLOYEE
-    ->     WHERE ID =X;
-    -> END;
-    -> //
+-> CREATE PROCEDURE Y (X INT)
+-> BEGIN
+->     SELECT NAME, BDATE
+->     FROM EMPLOYEE
+->     WHERE ID =X;
+-> END;
+-> //
 
 mysql> call Y(3); //
 +-------------+------------+
@@ -1891,15 +1922,15 @@ Query OK, 0 rows affected (0.00 sec)
 
 
 
-10. Write a PL/SQL block to read ID of an employee and display his month of birth.
+4. Write a PL/SQL block to read ID of an employee and display his month of birth.
 
 mysql> --ANANDHA KRYSHNAN
-    -> CREATE PROCEDURE month(x int)
-    -> begin
-    -> select month(BDATE)
-    -> FROM EMPLOYEE WHERE ID =X;
-    -> END;
-    -> //
+-> CREATE PROCEDURE month(x int)
+-> begin
+-> select month(BDATE)
+-> FROM EMPLOYEE WHERE ID =X;
+-> END;
+-> //
 
 mysql> call month(2); //
 +--------------+
@@ -1913,28 +1944,27 @@ Query OK, 0 rows affected (0.00 sec)
 
 
 
-11. Write a PL/SQL block to read IDs of two employees and display the difference in salary between them.
+5. Write a PL/SQL block to read IDs of two employees and display the difference in salary between them.
 
-mysql> --ANANDHA KRYSHNAN    
-    -> CREATE FUNCTION diff(id1 INT, id2 INT) RETURNS INT DETERMINISTIC
-    -> BEGIN
-    ->     DECLARE salary1 INT;
-    ->     DECLARE salary2 INT;
-    ->     DECLARE salary_difference INT;
-    ->
-    ->     SELECT SALARY INTO salary1 FROM EMPLOYEE WHERE ID = id1;
-    ->     SELECT SALARY INTO salary2 FROM EMPLOYEE WHERE ID = id2;
-    ->
-    ->     SET salary_difference = salary1 - salary2;
-    ->
-    ->     RETURN salary_difference;
-    -> END;
-    -> //
+mysql> --ANANDHA KRYSHNAN
+-> CREATE FUNCTION diff(id1 INT, id2 INT) RETURNS INT DETERMINISTIC
+-> BEGIN
+->     DECLARE salary1 INT;
+->     DECLARE salary2 INT;
+->     DECLARE salary_difference INT;
+->
+->     SELECT SALARY INTO salary1 FROM EMPLOYEE WHERE ID = id1;
+->     SELECT SALARY INTO salary2 FROM EMPLOYEE WHERE ID = id2;
+->
+->     SET salary_difference = salary1 - salary2;
+->
+->     RETURN salary_difference;
+-> END;
+-> //
 Query OK, 0 rows affected (0.01 sec)
 
-
-
 mysql> SELECT diff(2,1) AS salary_difference;//
+
 +-------------------+
 | salary_difference |
 +-------------------+
@@ -1942,40 +1972,40 @@ mysql> SELECT diff(2,1) AS salary_difference;//
 +-------------------+
 1 row in set (0.00 sec)
 
-16. Create a cursor to display the highest 10 salaries of the employee table.
+6. Create a cursor to display the highest 10 salaries of the employee table.
 
-mysql> --ANANDHA KRYSHNAN    
-    -> CREATE PROCEDURE display_top_salaries()
-    -> BEGIN
-    ->     DECLARE done BOOLEAN DEFAULT FALSE;
-    ->     DECLARE v_salary DECIMAL(10, 2);
-    ->
-    ->     -- Declare a cursor to fetch the highest 10 salaries
-    ->     DECLARE cursor_top_salaries CURSOR FOR
-    ->         SELECT SALARY
-    ->         FROM EMPLOYEE
-    ->         ORDER BY SALARY DESC
-    ->         LIMIT 10;
-    ->
-    ->     -- Declare a continue handler to exit the loop
-    ->     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-    ->
-    ->     -- Open the cursor
-    ->     OPEN cursor_top_salaries;
-    ->
-    ->     -- Fetch and display the salaries
-    ->     FETCH cursor_top_salaries INTO v_salary;
-    ->     WHILE NOT done DO
-    ->         -- Display the salary (you can modify this part based on your needs)
-    ->         SELECT v_salary AS TopSalary;
-    ->         -- Fetch the next row
-    ->         FETCH cursor_top_salaries INTO v_salary;
-    ->     END WHILE;
-    ->
-    ->     -- Close the cursor
-    ->     CLOSE cursor_top_salaries;
-    -> END;
-    -> //
+mysql> --ANANDHA KRYSHNAN
+-> CREATE PROCEDURE display_top_salaries()
+-> BEGIN
+->     DECLARE done BOOLEAN DEFAULT FALSE;
+->     DECLARE v_salary DECIMAL(10, 2);
+->
+->     -- Declare a cursor to fetch the highest 10 salaries
+->     DECLARE cursor_top_salaries CURSOR FOR
+->         SELECT SALARY
+->         FROM EMPLOYEE
+->         ORDER BY SALARY DESC
+->         LIMIT 10;
+->
+->     -- Declare a continue handler to exit the loop
+->     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+->
+->     -- Open the cursor
+->     OPEN cursor_top_salaries;
+->
+->     -- Fetch and display the salaries
+->     FETCH cursor_top_salaries INTO v_salary;
+->     WHILE NOT done DO
+->         -- Display the salary (you can modify this part based on your needs)
+->         SELECT v_salary AS TopSalary;
+->         -- Fetch the next row
+->         FETCH cursor_top_salaries INTO v_salary;
+->     END WHILE;
+->
+->     -- Close the cursor
+->     CLOSE cursor_top_salaries;
+-> END;
+-> //
 Query OK, 0 rows affected (0.04 sec)
 
 mysql> CALL display_top_salaries(); //
@@ -2023,42 +2053,22 @@ mysql> CALL display_top_salaries(); //
 
 Query OK, 0 rows affected (0.00 sec)
 
-18. Create a procedure to display Welcome to PL/SQL.
 
-mysql> --ANANDHA KRYSHNAN    
-   -> CREATE PROCEDURE display_welcome_message()
-    -> BEGIN
-    ->     SELECT 'Welcome to PL/SQL' AS message;
-    -> END;
-    -> //
-Query OK, 0 rows affected (0.03 sec)
-
-mysql> CALL display_welcome_message(); //
-
-
-+-------------------+
-| message           |
-+-------------------+
-| Welcome to PL/SQL |
-+-------------------+
-1 row in set (0.00 sec)
-
-Query OK, 0 rows affected (0.00 sec)
-
-19. Create a procedure to accept the dno and display the id, name and salary of all the
+7. Create a procedure to accept the dno and display the id, name and salary of all the
 employees working in that department. Execute this procedure and show the result.
 
 mysql> --ANANDHA KRYSHNAN
-    -> CREATE PROCEDURE display_employees_in_department(IN p_dno INT)
-    -> BEGIN
-    ->     SELECT ID, NAME, SALARY
-    ->     FROM EMPLOYEE
-    ->     WHERE DEPNO = p_dno;
-    -> END;
-    -> //
+-> CREATE PROCEDURE display_employees_in_department(IN p_dno INT)
+-> BEGIN
+->     SELECT ID, NAME, SALARY
+->     FROM EMPLOYEE
+->     WHERE DEPNO = p_dno;
+-> END;
+-> //
 Query OK, 0 rows affected (0.04 sec)
 
 mysql> CALL display_employees_in_department(101); //
+
 +----+-------------+----------+
 | ID | NAME        | SALARY   |
 +----+-------------+----------+
@@ -2069,21 +2079,14 @@ mysql> CALL display_employees_in_department(101); //
 
 Query OK, 0 rows affected (0.00 sec)
 
-20. Create a function to accept the id of an employee and return his salary.
+8. Create a function to accept the id of an employee and return his salary.
 mysql> --ANANDHA KRYSHNAN
 -> CREATE FUNCTION get_employee_salary(p_employee_id INT) RETURNS       DECIMAL(10, 2) DETERMINISTIC
-    -> BEGIN
-    ->     DECLARE v_salary DECIMAL(10, 2);
-    ->     SELECT SALARY INTO v_salary
-    ->     FROM EMPLOYEE
-    ->     WHERE ID = p_employee_id;
-    ->     RETURN v_salary;
-    -> END;
-    -> //
-
-
-
-
+-> BEGIN DECLARE v_salary DECIMAL(10, 2);
+->     SELECT SALARY INTO v_salary
+->     FROM EMPLOYEE WHERE ID = p_employee_id;
+->     RETURN v_salary; END;
+-> //
 Query OK, 0 rows affected (0.01 sec)
 
 mysql> SELECT get_employee_salary(1) AS employee_salary; //
@@ -2093,42 +2096,42 @@ mysql> SELECT get_employee_salary(1) AS employee_salary; //
 |        50000.00 |
 +-----------------+
 1 row in set (0.00 sec)
+9. Create a trigger to maintain an audit trail for employee table. When insert, update or delete is performed on employee table insert a row into emp_trail table with value specifying the operation and date of operation.
 
-21. Create a trigger to maintain an audit trail for employee table. When insert, update or delete is performed on employee table insert a row into emp_trail table with value specifying the operation and date of operation.
+mysql> --ANANDHA KRYSHNAN
+-> -- Create the EMP_TRAIL table for audit trail
+-> CREATE TABLE EMP_TRAIL (
+->     AUDIT_ID INT AUTO_INCREMENT PRIMARY KEY,
+->     EMPLOYEE_ID INT,
+->     OPERATION VARCHAR(10),
+->     OPERATION_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+->     FOREIGN KEY (EMPLOYEE_ID) REFERENCES EMPLOYEE(ID)
+-> );
 
-    -> -- Create the EMP_TRAIL table for audit trail
-    -> CREATE TABLE EMP_TRAIL (
-    ->     AUDIT_ID INT AUTO_INCREMENT PRIMARY KEY,
-    ->     EMPLOYEE_ID INT,
-    ->     OPERATION VARCHAR(10),
-    ->     OPERATION_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ->     FOREIGN KEY (EMPLOYEE_ID) REFERENCES EMPLOYEE(ID)
-    -> );
-    
 mysql> CREATE TRIGGER employee_audit_trigger
-    -> AFTER INSERT ON EMPLOYEE
-    -> FOR EACH ROW
-    -> BEGIN
-    ->     -- Insert a row into EMP_TRAIL for audit trail
-    ->     INSERT INTO EMP_TRAIL (EMPLOYEE_ID, OPERATION) VALUES (NEW.ID, 'INSERT');
-    -> END //
+-> AFTER INSERT ON EMPLOYEE
+-> FOR EACH ROW
+-> BEGIN
+->     -- Insert a row into EMP_TRAIL for audit trail
+->     INSERT INTO EMP_TRAIL (EMPLOYEE_ID, OPERATION) VALUES (NEW.ID, 'INSERT');
+-> END //
 
 Query OK, 0 rows affected (0.04 sec)
 
 mysql> CREATE TRIGGER employee_audit_trigger_update
-    -> AFTER UPDATE ON EMPLOYEE
-    -> FOR EACH ROW
-    -> BEGIN
-    ->     INSERT INTO EMP_TRAIL (EMPLOYEE_ID, OPERATION) VALUES (OLD.ID, 'UPDATE');
-    -> END //
+-> AFTER UPDATE ON EMPLOYEE
+-> FOR EACH ROW
+-> BEGIN
+->     INSERT INTO EMP_TRAIL (EMPLOYEE_ID, OPERATION) VALUES (OLD.ID, 'UPDATE');
+-> END //
 Query OK, 0 rows affected (0.03 sec)
 
 mysql> CREATE TRIGGER employee_audit_trigger_delete
-    -> AFTER DELETE ON EMPLOYEE
-    -> FOR EACH ROW
-    -> BEGIN
-    ->     INSERT INTO EMP_TRAIL (EMPLOYEE_ID, OPERATION) VALUES (OLD.ID, 'DELETE');
-    -> END //
+-> AFTER DELETE ON EMPLOYEE
+-> FOR EACH ROW
+-> BEGIN
+->     INSERT INTO EMP_TRAIL (EMPLOYEE_ID, OPERATION) VALUES (OLD.ID, 'DELETE');
+-> END //
 Query OK, 0 rows affected (0.01 sec)
 
 mysql> INSERT INTO EMPLOYEE (ID, NAME, SALARY, DEPNO, BDATE) VALUES (9, 'Joh', 50000.00, 100, '1990-01-15');
@@ -2142,40 +2145,43 @@ mysql> select*from EMP_TRAIL;
 +----------+-------------+-----------+---------------------+
 1 row in set (0.00 sec)
 
-22. Create a trigger to maintain an audit trail for employee table for tracking salary modifications. When salary is updates, insert into emp_sal_trail table a row with values of employee id, name, salary before modification, salary after modification and date of modification.
+10. Create a trigger to maintain an audit trail for employee table for tracking salary modifications. When salary is updates, insert into emp_sal_trail table a row with values of employee id, name, salary before modification, salary after modification and date of modification.
 
+mysql> --ANANDHA KRISHNAN
 mysql> CREATE TABLE EMP_SAL_TRAIL (
-    ->     TRAIL_ID INT AUTO_INCREMENT PRIMARY KEY,
-    ->     EMPLOYEE_ID INT,
-    ->     EMPLOYEE_NAME VARCHAR(255),
-    ->     SALARY_BEFORE DECIMAL(10, 2),
-    ->     SALARY_AFTER DECIMAL(10, 2),
-    ->     MODIFICATION_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ->     FOREIGN KEY (EMPLOYEE_ID) REFERENCES EMPLOYEE(ID)
-    -> );
+->     TRAIL_ID INT AUTO_INCREMENT PRIMARY KEY,
+->     EMPLOYEE_ID INT,
+->     EMPLOYEE_NAME VARCHAR(255),
+->     SALARY_BEFORE DECIMAL(10, 2),
+->     SALARY_AFTER DECIMAL(10, 2),
+->     MODIFICATION_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+->     FOREIGN KEY (EMPLOYEE_ID) REFERENCES EMPLOYEE(ID)
+-> );
 Query OK, 0 rows affected (0.09 sec)
 
-mysql>
+mysql> --ANANDHA KRISHNAN
 mysql> -- Create the trigger for salary modifications
 mysql> DELIMITER //
 mysql>
 mysql> CREATE TRIGGER salary_audit_trigger
-    -> AFTER UPDATE ON EMPLOYEE
-    -> FOR EACH ROW
-    -> BEGIN
-    ->     IF NEW.SALARY != OLD.SALARY THEN
-    ->         INSERT INTO EMP_SAL_TRAIL (EMPLOYEE_ID, EMPLOYEE_NAME, SALARY_BEFORE, SALARY_AFTER)
-    ->         VALUES (NEW.ID, NEW.NAME, OLD.SALARY, NEW.SALARY);
-    ->     END IF;
-    -> END //
+-> AFTER UPDATE ON EMPLOYEE
+-> FOR EACH ROW
+-> BEGIN
+->     IF NEW.SALARY != OLD.SALARY THEN
+->         INSERT INTO EMP_SAL_TRAIL (EMPLOYEE_ID, EMPLOYEE_NAME, SALARY_BEFORE, SALARY_AFTER)
+->         VALUES (NEW.ID, NEW.NAME, OLD.SALARY, NEW.SALARY);
+->     END IF;
+-> END //
 Query OK, 0 rows affected (0.01 sec)
 
+mysql> --ANANDHA KRISHNAN
 mysql> UPDATE EMPLOYEE
-    -> SET SALARY = 60000.00
-    -> WHERE ID = 1;
+-> SET SALARY = 60000.00
+-> WHERE ID = 1;
 Query OK, 1 row affected (0.03 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
+mysql> --ANANDHA KRISHNAN
 mysql> select *from  EMP_SAL_TRAIL;
 +----------+-------------+---------------+---------------+--------------+---------------------+
 | TRAIL_ID | EMPLOYEE_ID | EMPLOYEE_NAME | SALARY_BEFORE | SALARY_AFTER | MODIFICATION_DATE   |
@@ -2184,77 +2190,80 @@ mysql> select *from  EMP_SAL_TRAIL;
 +----------+-------------+---------------+---------------+--------------+---------------------+
 1 row in set (0.00 sec)
 
-23. Create a trigger to prevent salary modification of an employee, if salary after modification is less than the salary before modification.
+11. Create a trigger to prevent salary modification of an employee, if salary after modification is less than the salary before modification.
 
+mysql> --ANANDHA KRISHNAN
 mysql> CREATE TRIGGER prevent_salary_modification
-    -> BEFORE UPDATE ON EMPLOYEE
-    -> FOR EACH ROW
-    -> BEGIN
-    ->     IF NEW.SALARY < OLD.SALARY THEN
-    ->         SIGNAL SQLSTATE '45000'
-    ->         SET MESSAGE_TEXT = 'Cannot update salary. New salary is less than current salary.';
-    ->     END IF;
-    -> END //
+-> BEFORE UPDATE ON EMPLOYEE
+-> FOR EACH ROW
+-> BEGIN
+->     IF NEW.SALARY < OLD.SALARY THEN
+->         SIGNAL SQLSTATE '45000'
+->         SET MESSAGE_TEXT = 'Cannot update salary. New salary is less than current salary.';
+->     END IF;
+-> END //
 Query OK, 0 rows affected (0.05 sec)
 
 mysql> UPDATE EMPLOYEE
-    -> SET SALARY = 1000.00
-    -> WHERE ID = 1;
+-> SET SALARY = 1000.00
+-> WHERE ID = 1;
 ERROR 1644 (45000): Cannot update salary. New salary is less than current salary.
 
-24. Create a trigger to prevent salary modification of an employee on Sunday.
+12. Create a trigger to prevent salary modification of an employee on Sunday.
 
+mysql> --ANANDHA KRISHNAN
 mysql> CREATE TRIGGER prevent_salary_modification_sunday
-    -> BEFORE UPDATE ON EMPLOYEE
-    -> FOR EACH ROW
-    -> BEGIN
-    ->     IF DAYOFWEEK(NOW()) = 1 THEN
-    ->         SIGNAL SQLSTATE '45000'
-    ->         SET MESSAGE_TEXT = 'Cannot update salary on Sunday.';
-    ->     END IF;
-    -> END //
+-> BEFORE UPDATE ON EMPLOYEE
+-> FOR EACH ROW
+-> BEGIN
+->     IF DAYOFWEEK(NOW()) = 1 THEN
+->         SIGNAL SQLSTATE '45000'
+->         SET MESSAGE_TEXT = 'Cannot update salary on Sunday.';
+->     END IF;
+-> END //
 Query OK, 0 rows affected (0.04 sec)
 
+mysql> --ANANDHA KRISHNAN
 mysql> UPDATE EMPLOYEE SET SALARY = 60000.00 WHERE ID = 1;
 ERROR 1644 (45000): Cannot update salary on Sunday.
 
-25.Assume a table Department with columns DeptNo and Total_Sal. Total_Sal maintains the total salary given by that department. Create triggers on employee table for maintaining Total_Sal in Department table.
+13.Assume a table Department with columns DeptNo and Total_Sal. Total_Sal maintains the total salary given by that department. Create triggers on employee table for maintaining Total_Sal in Department table.
 
+mysql> --ANANDHA KRISHNAN
 mysql> CREATE TABLE Department (
-    ->     DeptNo INT PRIMARY KEY,
-    ->     Total_Sal DECIMAL(10, 2) DEFAULT 0.00);
+->     DeptNo INT PRIMARY KEY,
+->     Total_Sal DECIMAL(10, 2) DEFAULT 0.00);
 Query OK, 0 rows affected (0.17 sec)
 
 mysql> CREATE TRIGGER update_total_sal_after_insert
-    -> AFTER INSERT ON Employe
-    -> FOR EACH ROW
-    -> BEGIN
-    ->     UPDATE Department
-    ->     SET Total_Sal = Total_Sal + NEW.SALARY
-    ->     WHERE DeptNo = NEW.DEPTNO;
-    -> END //
+-> AFTER INSERT ON Employe
+-> FOR EACH ROW
+-> BEGIN
+->     UPDATE Department
+->     SET Total_Sal = Total_Sal + NEW.SALARY
+->     WHERE DeptNo = NEW.DEPTNO;
+-> END //
 Query OK, 0 rows affected (0.01 sec)
 
 mysql> CREATE TRIGGER update_total_sal_after_update
-    -> AFTER UPDATE ON Employe
-    -> FOR EACH ROW
-    -> BEGIN
-    ->     UPDATE Department
-    ->     SET Total_Sal = Total_Sal - OLD.SALARY + NEW.SALARY
-    ->     WHERE DeptNo = OLD.DEPTNO;
-    -> END //
+-> AFTER UPDATE ON Employe
+-> FOR EACH ROW
+-> BEGIN
+->     UPDATE Department
+->     SET Total_Sal = Total_Sal - OLD.SALARY + NEW.SALARY
+->     WHERE DeptNo = OLD.DEPTNO;
+-> END //
 Query OK, 0 rows affected (0.05 sec)
 
 mysql> CREATE TRIGGER update_total_sal_after_delete
-    -> AFTER DELETE ON Employe
-    -> FOR EACH ROW
-    -> BEGIN
-    ->     UPDATE Department
-    ->     SET Total_Sal = Total_Sal - OLD.SALARY
-    ->     WHERE DeptNo = OLD.DEPTNO;
-    -> END //
+-> AFTER DELETE ON Employe
+-> FOR EACH ROW
+-> BEGIN
+->     UPDATE Department
+->     SET Total_Sal = Total_Sal - OLD.SALARY
+->     WHERE DeptNo = OLD.DEPTNO;
+-> END //
 Query OK, 0 rows affected (0.01 sec)
-
 mysql> INSERT INTO Department (DeptNo) VALUES (1);
 ERROR 1062 (23000): Duplicate entry '1' for key 'Department.PRIMARY'
 mysql> INSERT INTO Employe (ID, NAME, SALARY, DEPTNO, BDATE) VALUES (1, 'John Doe', 50000.00, 1, '1990-01-15');
@@ -2281,7 +2290,6 @@ mysql>
 mysql> -- Update the salary of an employee
 mysql> UPDATE Employee SET SALARY = 55000.00 WHERE ID = 1;
 ERROR 1054 (42S22): Unknown column 'SALARY' in 'field list'
-mysql>
 mysql> -- Verify the updated state of the tables
 mysql> SELECT * FROM Department;
 +--------+-----------+
@@ -2298,13 +2306,10 @@ mysql> SELECT * FROM Employe;
 |  1 | John Doe | 50000.00 |      1 | 1990-01-15 |
 +----+----------+----------+--------+------------+
 1 row in set (0.00 sec)
-
-mysql>
 mysql> -- Delete an employee
 mysql> DELETE FROM Employee WHERE ID = 1;
 Query OK, 0 rows affected (0.00 sec)
 
-mysql>
 mysql> -- Verify the final state of the tables
 mysql> SELECT * FROM Department;
 
@@ -2323,6 +2328,378 @@ mysql> SELECT * FROM Employe;
 |  1 | John Doe | 50000.00 |      1 | 1990-01-15 |
 +----+----------+----------+--------+------------+
 1 row in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PL/SQL SYLABUS EXERCISE
+
+
+1. Book return should insert an entry into the Book_Return table and also update the status in Book_Issue table as ‘Returned’. (stored procedure).
+
+mysql> --ANANDHA KRISHNAN
+mysql> CREATE PROCEDURE ReturnBook(
+->     IN p_IssueId INT,
+->     IN p_ActualDateOfReturn DATE
+-> )
+-> BEGIN
+->     -- Declare variables
+->     DECLARE lateDays INT;
+->     DECLARE lateFee DECIMAL;
+->
+->     -- Calculate late days and late fee
+->     SELECT
+->         DATEDIFF(p_ActualDateOfReturn, bi.Expected_Date_Of_Return),
+->         CASE
+->             WHEN DATEDIFF(p_ActualDateOfReturn, bi.Expected_Date_Of_Return) BETWEEN 0 AND 7 THEN
+->                 DATEDIFF(p_ActualDateOfReturn, bi.Expected_Date_Of_Return) * lfr.Amount
+->             WHEN DATEDIFF(p_ActualDateOfReturn, bi.Expected_Date_Of_Return) BETWEEN 8 AND 30 THEN
+->                 lfr.Amount
+->             ELSE
+->                 DATEDIFF(p_ActualDateOfReturn, bi.Expected_Date_Of_Return) * lfr.Amount
+->         END
+->     INTO
+->         lateDays, lateFee
+->     FROM
+->         BOOK_ISSUE bi
+->     LEFT JOIN
+->         LATE_FEE_RULE lfr ON DATEDIFF(p_ActualDateOfReturn, bi.Expected_Date_Of_Return) BETWEEN lfr.FromDays AND lfr.ToDays
+->     WHERE
+->         bi.Issue_Id = p_IssueId;
+->
+->     -- Insert entry into BOOK_RETURN table
+->     INSERT INTO BOOK_RETURN (Issue_Id, Actual_Date_Of_Return, LateDays, LateFee)
+->     VALUES (p_IssueId, p_ActualDateOfReturn, lateDays, lateFee);
+->
+->     -- Update status in BOOK_ISSUE table
+->     UPDATE BOOK_ISSUE
+->     SET Status = 'Returned'
+->     WHERE Issue_Id = p_IssueId;
+->
+-> END //
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> CALL ReturnBook(12, '2023-01-15');
+Query OK, 1 row affected (0.04 sec)
+
+
+2. Create a database view ‘Available_Books’, which will list out books that are currently available in the library
+
+mysql> --ANANDHA KRISHNAN
+mysql> CREATE VIEW Available_Books AS
+-> SELECT
+->     b.Book_Id,
+->     b.Title,
+->     b.Language_Id,
+->     b.MRP,
+->     b.Publisher_Id,
+->     b.Published_Date,
+->     b.Volume,
+->     b.Status AS Book_Status,
+->     bi.Issue_Id,
+->     bi.Date_Of_Issue,
+->     bi.Expected_Date_Of_Return,
+->     bi.Status AS Issue_Status
+-> FROM BOOK b
+-> LEFT JOIN
+->     BOOK_ISSUE bi ON b.Book_Id = bi.Book_Id
+-> WHERE
+->     bi.Issue_Id IS NULL OR bi.Status = 'Returned';
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> SELECT * FROM Available_Books;
+
+
++---------+------------------------------+-------------+-------+--------------+----------------+--------+-------------+----------+---------------+-------------------------+--------------+
+| Book_Id | Title                        | Language_Id | MRP   | Publisher_Id | Published_Date | Volume | Book_Status | Issue_Id | Date_Of_Issue | Expected_Date_Of_Return | Issue_Status |
++---------+------------------------------+-------------+-------+--------------+----------------+--------+-------------+----------+---------------+-------------------------+--------------+
+|       3 | Murder on the Orient Express |           1 | 12.99 |            3 | 1934-01-01     |      1 | Available   |       12 | 2023-10-05    | 2023-10-19              | Returned     |
+|       6 | Book 2                       |           1 | 25.00 |            2 | 2022-02-01     |      2 | Available   |     NULL | NULL          | NULL                    | NULL         |
+|       7 | Book 1                       |           1 | 20.00 |            1 | 2022-01-01     |      1 | Available   |     NULL | NULL          | NULL                    | NULL         |
++---------+------------------------------+-------------+-------+--------------+----------------+--------+-------------+----------+---------------+-------------------------+--------------+
+3 rows in set (0.00 sec)
+
+3. Create a database procedure to add, update and delete a book to the Library database (use parameters).
+
+mysql> --ANANDHA KRISHNAN
+mysql> CREATE PROCEDURE ManageBook(
+->     IN p_Operation VARCHAR(10),  -- 'Add', 'Update', or 'Delete'
+->     IN p_BookId INT,
+->     IN p_Title VARCHAR(255),
+->     IN p_LanguageId INT,
+->     IN p_MRP DECIMAL(10, 2),
+->     IN p_PublisherId INT,
+->     IN p_PublishedDate DATE,
+->     IN p_Volume INT
+-> )
+-> BEGIN
+->     IF p_Operation = 'Add' THEN
+->         -- Add a new book
+->         INSERT INTO BOOK (Title, Language_Id, MRP, Publisher_Id, Published_Date, Volume, Status)
+->         VALUES (p_Title, p_LanguageId, p_MRP, p_PublisherId, p_PublishedDate, p_Volume, 'Available');
+->
+->     ELSEIF p_Operation = 'Update' THEN
+->         -- Update an existing book
+->         UPDATE BOOK
+->         SET
+->             Title = p_Title,
+->             Language_Id = p_LanguageId,
+->             MRP = p_MRP,
+->             Publisher_Id = p_PublisherId,
+->             Published_Date = p_PublishedDate,
+->             Volume = p_Volume
+->         WHERE
+->             Book_Id = p_BookId;
+->
+->     ELSEIF p_Operation = 'Delete' THEN
+->         -- Delete a book
+->         DELETE FROM BOOK WHERE Book_Id = p_BookId;
+->
+->     ELSE
+->         -- Invalid operation
+->         SIGNAL SQLSTATE '45000'
+->         SET MESSAGE_TEXT = 'Invalid operation. Use "Add", "Update", or "Delete".';
+->     END IF;
+->
+-> END //
+Query OK, 0 rows affected (0.01 sec)
+
+CALL ManageBook('Update', 1, 'Updated Book Title', 2, 25.99, 2, '2023-02-01', 2);
+Query OK, 1 row affected (0.03 sec)
+
+
+
+4. Use cursors and create a procedure to print Books Issue Register
+
+mysql> --ANANDHA KRISHNAN
+mysql> CREATE PROCEDURE PrintBooksIssueRegister()
+-> BEGIN
+->     -- Declare variables
+->     DECLARE done BOOLEAN DEFAULT FALSE;
+->     DECLARE issueId INT;
+->     DECLARE memberId INT;
+->     DECLARE bookId INT;
+->     DECLARE memberName VARCHAR(100);
+->     DECLARE bookTitle VARCHAR(255);
+->     DECLARE dateOfIssue DATE;
+->     DECLARE expectedDateOfReturn DATE;
+->     DECLARE status VARCHAR(50);
+->
+->     -- Declare cursor
+->     DECLARE cur_books_issue CURSOR FOR
+->         SELECT
+->             bi.Issue_Id,
+->             bi.Member_Id,
+->             bi.Book_Id,
+->             m.Name AS Member_Name,
+->             b.Title AS Book_Title,
+->             bi.Date_Of_Issue,
+->             bi.Expected_Date_Of_Return,
+->             bi.Status
+->         FROM
+->             BOOK_ISSUE bi
+->         JOIN
+->             MEMBER m ON bi.Member_Id = m.Member_Id
+->         JOIN
+->             BOOK b ON bi.Book_Id = b.Book_Id;
+->
+->     -- Declare continue handler
+->     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+->
+->     -- Open the cursor
+->     OPEN cur_books_issue;
+->
+->     -- Print header
+->     SELECT 'Issue_Id', 'Member_Id', 'Book_Id', 'Member_Name', 'Book_Title', 'Date_Of_Issue', 'Expected_Date_Of_Return', 'Status';
+->
+->     -- Loop through the cursor
+->     read_loop: LOOP
+->         -- Fetch data from the cursor
+->         FETCH cur_books_issue INTO issueId, memberId, bookId, memberName, bookTitle, dateOfIssue, expectedDateOfReturn, status;
+->         -- Check if there are no more rows
+->         IF done THEN
+->             LEAVE read_loop;
+->         END IF;
+->
+->         -- Print data
+->         SELECT issueId, memberId, bookId, memberName, bookTitle, dateOfIssue, expectedDateOfReturn, status;
+->     END LOOP;
+->     CLOSE cur_books_issue;
+->
+-> END //
+Query OK, 0 rows affected (0.04 sec)
+
+
+mysql> CALL PrintBooksIssueRegister();
++----------+-----------+---------+-------------+------------+---------------+-------------------------+--------+
+| Issue_Id | Member_Id | Book_Id | Member_Name | Book_Title | Date_Of_Issue | Expected_Date_Of_Return | Status |
++----------+-----------+---------+-------------+------------+---------------+-------------------------+--------+
+1 row in set (0.04 sec)
+
+
+
+
+
++---------+----------+--------+------------+--------------------+-------------+----------------------+--------+
+| issueId | memberId | bookId | memberName | bookTitle          | dateOfIssue | expectedDateOfReturn | status |
++---------+----------+--------+------------+--------------------+-------------+----------------------+--------+
+|       1 |        1 |      1 | John Smith | Updated Book Title | 2023-10-15  | 2023-10-29           | Issued |
++---------+----------+--------+------------+--------------------+-------------+----------------------+--------+
+1 row in set (0.04 sec)
+
++---------+----------+--------+------------+--------------------+-------------+----------------------+--------+
+| issueId | memberId | bookId | memberName | bookTitle          | dateOfIssue | expectedDateOfReturn | status |
++---------+----------+--------+------------+--------------------+-------------+----------------------+--------+
+|       6 |        1 |      1 | John Smith | Updated Book Title | 2023-03-15  | 2023-03-29           | Issued |
++---------+----------+--------+------------+--------------------+-------------+----------------------+--------+
+1 row in set (0.04 sec)
+
++---------+----------+--------+------------+--------------------+-------------+----------------------+--------+
+| issueId | memberId | bookId | memberName | bookTitle          | dateOfIssue | expectedDateOfReturn | status |
++---------+----------+--------+------------+--------------------+-------------+----------------------+--------+
+|      10 |        1 |      1 | John Smith | Updated Book Title | 2023-10-01  | 2023-10-15           | Issued |
++---------+----------+--------+------------+--------------------+-------------+----------------------+--------+
+1 row in set (0.04 sec)
+
++---------+----------+--------+------------+-----------+-------------+----------------------+--------+
+| issueId | memberId | bookId | memberName | bookTitle | dateOfIssue | expectedDateOfReturn | status |
++---------+----------+--------+------------+-----------+-------------+----------------------+--------+
+|       2 |        2 |      2 | Jane Doe   | 1984      | 2023-10-18  | 2023-11-01           | Issued |
++---------+----------+--------+------------+-----------+-------------+----------------------+--------+
+1 row in set (0.04 sec)
+
++---------+----------+--------+------------+-----------+-------------+----------------------+--------+
+| issueId | memberId | bookId | memberName | bookTitle | dateOfIssue | expectedDateOfReturn | status |
++---------+----------+--------+------------+-----------+-------------+----------------------+--------+
+|       7 |        2 |      2 | Jane Doe   | 1984      | 2023-04-01  | 2023-04-15           | Issued |
++---------+----------+--------+------------+-----------+-------------+----------------------+--------+
+1 row in set (0.04 sec)
+
++---------+----------+--------+------------+-----------+-------------+----------------------+--------+
+| issueId | memberId | bookId | memberName | bookTitle | dateOfIssue | expectedDateOfReturn | status |
++---------+----------+--------+------------+-----------+-------------+----------------------+--------+
+|      11 |        2 |      2 | Jane Doe   | 1984      | 2023-09-15  | 2023-09-30           | Issued |
++---------+----------+--------+------------+-----------+-------------+----------------------+--------+
+1 row in set (0.04 sec)
+
++---------+----------+--------+--------------+------------------------------+-------------+----------------------+--------+
+| issueId | memberId | bookId | memberName   | bookTitle                    | dateOfIssue | expectedDateOfReturn | status |
++---------+----------+--------+--------------+------------------------------+-------------+----------------------+--------+
+|       3 |        3 |      3 | Mike Johnson | Murder on the Orient Express | 2023-10-20  | 2023-11-03           | Issued |
++---------+----------+--------+--------------+------------------------------+-------------+----------------------+--------+
+1 row in set (0.04 sec)
+
+
+
++---------+----------+--------+--------------+------------------------------+-------------+----------------------+----------+
+| issueId | memberId | bookId | memberName   | bookTitle                    | dateOfIssue | expectedDateOfReturn | status   |
++---------+----------+--------+--------------+------------------------------+-------------+----------------------+----------+
+|      12 |        3 |      3 | Mike Johnson | Murder on the Orient Express | 2023-10-05  | 2023-10-19           | Returned |
++---------+----------+--------+--------------+------------------------------+-------------+----------------------+----------+
+1 row in set (0.04 sec)
+
++---------+----------+--------+------------+-------------+-------------+----------------------+--------+
+| issueId | memberId | bookId | memberName | bookTitle   | dateOfIssue | expectedDateOfReturn | status |
++---------+----------+--------+------------+-------------+-------------+----------------------+--------+
+|       4 |        4 |      4 | Lisa Brown | The Shining | 2023-10-22  | 2023-11-05           | Issued |
++---------+----------+--------+------------+-------------+-------------+----------------------+--------+
+1 row in set (0.04 sec)
+
+5. Create a history table (you may use the same structure without any keys) for the MEMBER table and copy the original values of the row being updated to the history table using a TRIGGER.
+
+mysql> --ANANDHA KRISHNAN
+mysql> CREATE TABLE MEMBER_HISTORY (
+->     History_Id INT AUTO_INCREMENT,
+->     Original_Member_Id INT,
+->     Original_Name VARCHAR(100),
+->     Original_Branch_Code VARCHAR(10),
+->     Original_Roll_Number VARCHAR(20),
+->     Original_Phone_Number VARCHAR(15),
+->     Original_Email_Id VARCHAR(100),
+->     Original_Date_of_Join DATE,
+->     Original_Status VARCHAR(50),
+->     Update_Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+->     PRIMARY KEY (History_Id)
+-> );
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> CREATE TRIGGER before_member_update
+-> BEFORE UPDATE ON MEMBER
+-> FOR EACH ROW
+-> BEGIN
+->     INSERT INTO MEMBER_HISTORY (
+->         Original_Member_Id,
+->         Original_Name,
+->         Original_Branch_Code,
+->         Original_Roll_Number,
+->         Original_Phone_Number,
+->         Original_Email_Id,
+->         Original_Date_of_Join,
+->         Original_Status
+->     )
+->     VALUES (
+->         OLD.Member_Id,
+->         OLD.Name,
+->         OLD.Branch_Code,
+->         OLD.Roll_Number,
+->         OLD.Phone_Number,
+->         OLD.Email_Id,
+->         OLD.Date_of_Join,
+->         OLD.Status
+->     );
+-> END;
+->
+-> //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO MEMBER (Member_Id, Name, Branch_Code, Roll_Number, Phone_Number, Email_Id, Date_of_Join, Status)
+-> VALUES (11, 'John Doe', 'CS', 'CS101', '1234567890', 'john@example.com', '2023-01-01', 'Active');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> UPDATE MEMBER
+-> SET Name = 'John Smith'
+-> WHERE Member_Id = 1;
+Query OK, 0 rows affected (0.04 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> SELECT * FROM MEMBER_HISTORY;
++------------+--------------------+---------------+----------------------+----------------------+-----------------------+-------------------+-----------------------+-----------------+---------------------+
+| History_Id | Original_Member_Id | Original_Name | Original_Branch_Code | Original_Roll_Number | Original_Phone_Number | Original_Email_Id | Original_Date_of_Join | Original_Status | Update_Time         |
++------------+--------------------+---------------+----------------------+----------------------+-----------------------+-------------------+-----------------------+-----------------+---------------------+
+|          1 |                  1 | John Smith    | B001                 | SM12345              | 123-456-7890          | john@example.com  | 2023-01-15            | Active          | 2023-11-21 23:58:21 |
++------------+--------------------+---------------+----------------------+----------------------+-----------------------+-------------------+-----------------------+-----------------+---------------------+
+1 row in set (0.00 sec)
+ss
+GROUP PROJECT
+PHARMACY MANAGEMENT
+
+
+
+ABSTRACT
+Computer can be designed to do almost anything with information’s. In this era people uses computer to reduce the time and to do works in less time with accurate output. We’re doing a “SQL Connectivity Project” for a Pharmacy to achieve this. Software “Pharmacy Management Software “is architecture with the intention of digitalization of a Pharmacy. Aimed in reducing the manual requirements in the operation. The user is minimal so that it is easy use. This software “Pharmacy Management Software “consists of different part which can manage all your purchases from drug companies without any hassle. You can add new companies, modify deals with old ones. Send messages to other employees. Everyone has separate login ids and passwords. This software is developed using NETBEANS in the front end and MYSQL as the backend to support this software.
+
+
+
+
 
 
 
