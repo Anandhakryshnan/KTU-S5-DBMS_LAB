@@ -1652,6 +1652,13 @@ mysql> SELECT
 |         8 | New Member C | B008        | R008        | 666-888-1111 | newmemberC@email.com | 2021-05-01   | Active |
 +-----------+--------------+-------------+-------------+--------------+----------------------+--------------+--------+
 3 rows in set (0.01 sec)
+
+
+
+
+
+
+
 PL/SQL PRACTISE QUESTIONS
 1. Write a PL/SQL block to read two numbers and find the greatest among them.
 
